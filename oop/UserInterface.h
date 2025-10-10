@@ -1,25 +1,18 @@
 #pragma once
+#include "CController.h"
+#include "MyIterator.h"
 
-class CMyList;
+class CController; // 전방 선언
 
-class CUserInterface
-{
-public:
-	CUserInterface(CMyList &rList);
-	~CUserInterface(void);
-	void add(void);
-
-protected:
-	CMyList	 &m_list;
+class CUserInterface {
+private:
+    CController& m_ctrl; // Controller 참조
 
 public:
-	void search(void);
-
-	void remove(void);
-
-	void printAll(void);
-
-	int printUI(void);
-
-	int run(void);
+    CUserInterface(CController& ctrl);
+    int printMenu();
+    void inputName(char* name);
+    void inputPhone(char* phone);
+    void printMessage(const char* msg);
+    void displayUserList(CMyIterator& it);
 };

@@ -3,8 +3,8 @@
 #include <cstring>
 #include <conio.h>
 
-CMyListEx::CMyListEx(CMyNode *pHead)
-	: CMyList(pHead)
+CMyListEx::CMyListEx()
+	: CMyList() ////  기본 생성자 호출 (더미 내부 생성)
 {
 }
 

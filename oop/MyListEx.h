@@ -4,7 +4,7 @@
 class CMyListEx : public CMyList
 {
 public:
-	CMyListEx(CMyNode *pHead);
+	CMyListEx();
 	~CMyListEx(void);
 	virtual int OnAddNewNode(CMyNode* pNewNode);
 };

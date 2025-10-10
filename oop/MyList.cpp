@@ -4,9 +4,9 @@
 #include <cstring>
 #include <conio.h>
 
-CMyList::CMyList(CMyNode *pHead)
+CMyList::CMyList()
 {
-	m_pHead = pHead;
+	m_pHead = new CUserData("Dummy", "Head");
 }
 
 CMyList::~CMyList(void)

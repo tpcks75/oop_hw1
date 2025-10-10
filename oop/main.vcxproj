@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyIterator.cpp" />
     <ClCompile Include="MyList.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CController.h" />
     <ClInclude Include="MyIterator.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="MyListEx.h" />

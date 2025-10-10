@@ -5,7 +5,7 @@
 class CMyList
 {
 public:
-	CMyList(CMyNode *pHead);
+	CMyList(void);
 	~CMyList(void);
 
 protected:
