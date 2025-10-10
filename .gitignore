@@ -1,0 +1,11 @@
+/Release/
+/.vs/
+*.exe
+*.pdb
+*.obj
+*.user
+*.suo
+*.idb
+*.ilk
+*.log
+*.aps
