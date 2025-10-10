@@ -1,6 +1,5 @@
 /Release/
 /.vs/
-*.exe
 *.pdb
 *.obj
 *.user
