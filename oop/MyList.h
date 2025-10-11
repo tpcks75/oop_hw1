@@ -18,6 +18,13 @@ public:
 	// 노드 검색
 	CMyNode* findNode(const char* pszKey);
 
+	CMyNode* findByName(const char* pszName);
+	CMyNode* findByStudentID(const char* pszID);
+	CMyNode* findByAdmissionYear(const char* pszYear);
+	CMyNode* findByBirth(const char* pszBirth);
+	CMyNode* findByDept(const char* pszDept);
+
+
 	// 노드 추가 , 이미 존재 시 0, 이름 외의 문자 입력 시 -1 반환
 	int addNewNode(CMyNode *pNewNode);
 
@@ -32,4 +39,7 @@ public:
 
 	// 데이터가 추가될 때마다 호출되는 가상 함수 기능 미구현
 	virtual int onAddNewNode(CMyNode* pNewNode);
+
+	//노드 출력
+	void printAll();
 };

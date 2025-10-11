@@ -11,11 +11,11 @@
 
 CController::CController(void)
 {
-    m_list.addNewNode(new CUserData("Alexander Smith", "2026-68814", "2001", "ComputerEng", "010-8592-8369"));
-    m_list.addNewNode(new CUserData("Benjamin Brown", "2027-54203", "2000", "SoftwareSys", "010-7324-9912"));
-    m_list.addNewNode(new CUserData("Charlotte Davis", "2028-39425", "2002", "AIResearch", "010-1557-6238"));
-    m_list.addNewNode(new CUserData("Dominic Carter", "2029-81247", "1999", "MechDesign", "010-4682-5071"));
-    m_list.addNewNode(new CUserData("Eleanor Wilson", "2023-10563", "2003", "DataScience", "010-9135-2746"));
+    m_list.addNewNode(new CUserData("Alexander Smith", "2006303001", "2001", "ComputerEng", "01085928369"));
+    m_list.addNewNode(new CUserData("Benjamin Brown", "2003303531", "2000", "SoftwareSys", "01073249912"));
+    m_list.addNewNode(new CUserData("Charlotte Davis", "2007343001", "2002", "AIResearch", "01015576238"));
+    m_list.addNewNode(new CUserData("Dominic Carter", "2003303561", "1999", "MechDesign", "01046825071"));
+    m_list.addNewNode(new CUserData("Eleanor Wilson", "2001223001", "2003", "DataScience", "01091352746"));
 
 
 	m_ui = new CUserInterface(*this);
@@ -37,7 +37,7 @@ void CController::run() {
 }
 
 
-// Model 조작 로직은 Controller가 담당
+// Case 1
 void CController::addUser() {
     char name[32], id[32], birth[32], dept[64], tel[32];
     
@@ -68,6 +68,7 @@ void CController::addUser() {
     _getch();
 }
 
+// Case 2
 void CController::removeUser() {
     char name[32];
     m_ui->inputName(name);
@@ -76,8 +77,8 @@ void CController::removeUser() {
     else
         m_ui->printMessage("삭제 실패. 데이터 없음.");
 }
-
-void CController::searchUser() {
+// Case 3
+void CController::searchUser1() {
     char id[32];
     m_ui->inputName(id);
     CMyNode* p = m_list.findNode(id);
@@ -87,16 +88,82 @@ void CController::searchUser() {
     printf("아무 키나 누르면 메뉴로 돌아갑니다...\n\n");
     _getch();
 }
-
+// Case 4 제거 예정
 void CController::showAllUsers() {
 
+    m_list.printAll();
+    /*
 	CMyIterator iter = m_list.makeIterator();
     CUserData* pNode = nullptr;
 
     // model에서 데이터를가져와 UI에 출력요청
     m_ui->displayUserList(iter);
+    */
 }
 
+// Case 5
 void CController::sortByID() {
     m_list.sortByID();
+}
+
+
+/// ////////////////////////////////////////
+/// </summary> Search
+
+void CController::searchUser() {
+    int choice = 0;
+    system("cls");
+    printf("- Search -\n");
+    printf("1. Search by name\n");
+    printf("2. Search by student ID (10 digits)\n");
+    printf("3. Search by admission year (4 digits)\n");
+    printf("4. Search by birth year (4 digits)\n");
+    printf("5. Search by department name\n");
+    printf("6. List All\n\n");
+    printf("> ");
+    scanf_s("%d", &choice);
+
+    char key[64] = { 0 };
+    CMyNode* pNode = nullptr;
+
+    switch (choice) {
+    case 1:
+        m_ui->inputName(key);
+        pNode = m_list.findByName(key);
+        break;
+    case 2:
+        m_ui->inputStudentID(key);
+        pNode = m_list.findByStudentID(key);
+        break;
+    case 3:
+        // admissionyear은 userdata에 studentid기반 4자리수반환함수 구성
+        m_ui->inputAdmissionYear(key);
+        pNode = m_list.findByAdmissionYear(key);
+        break;
+    case 4:
+        m_ui->inputBirth(key);
+        pNode = m_list.findByBirth(key);
+        break; 
+    case 5:
+        m_ui->inputDept(key);
+        pNode = m_list.findByDept(key);
+        break;
+    case 6:
+        // 
+        m_list.printAll();
+        return;
+    default:
+        printf("Invalid choice.\n");
+        _getch();
+        return;
+    }
+
+    if (pNode)
+        // pNode는 MyNode 포인터이므로 UserData로 다운캐스팅
+        ((CUserData*)pNode)->printNode();
+    else
+        printf("\n검색 결과가 없습니다.\n");
+
+    printf("\n아무 키나 누르면 메뉴로 돌아갑니다...\n");
+    _getch();
 }

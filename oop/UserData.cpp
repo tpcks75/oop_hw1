@@ -1,5 +1,6 @@
 #include "UserData.h"
 #include <cstdio>
+#include <cstring>
 
 
 
@@ -35,8 +36,7 @@ const char* CUserData::getKey(void)
 void CUserData::printNode(void)
 {
 #ifdef _DEBUG
-	printf("[%p] %-15s %-10s %-10s %-20s %-12s [%p]\n",
-		this,
+	printf(" %-15s %-10s %-10s %-20s %-12s \n",
 		(const char*)strName,
 		(const char*)strStudentID,
 		(const char*)strBirth,
@@ -51,4 +51,17 @@ void CUserData::printNode(void)
 		(const char*)strDept,
 		(const char*)strTel);
 #endif
+}
+
+const char* CUserData::getAdmissionYear(void)
+{
+	static char szYear[5] = { 0 };  // 4자리 + null
+	const char* id = strStudentID.getString();
+
+	if (id == nullptr || std::strlen(id) < 4)
+		return "";
+
+	strncpy_s(szYear, id, 4);  // 앞 4자리 복사
+	szYear[4] = '\0';          // null terminator
+	return szYear;
 }

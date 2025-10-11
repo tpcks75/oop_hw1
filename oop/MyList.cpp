@@ -6,7 +6,7 @@
 
 CMyList::CMyList()
 {
-	m_pHead = new CUserData("Dummyaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000");
+	m_pHead = new CUserData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000");
 }
 
 CMyList::~CMyList(void)
@@ -52,6 +52,7 @@ void CMyList::printAll(void)
 }
 */
 
+
 CMyNode* CMyList::findNode(const char* pszKey)
 {
 	CMyNode *pTmp = m_pHead->pNext;
@@ -67,6 +68,9 @@ CMyNode* CMyList::findNode(const char* pszKey)
 
 	return NULL;
 }
+
+
+
 
 int CMyList::removeNode(const char* pszKey)
 {
@@ -183,4 +187,85 @@ CMyIterator CMyList::makeIterator(void)
 int CMyList::onAddNewNode(CMyNode* pNewNode)
 {
 	return 1;
+}
+
+/////////////////////////////////////////////////  find node
+CMyNode* CMyList::findByName(const char* pszName)
+{
+	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
+	{
+		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		if (strcmp(pUser->getName(), pszName) == 0)
+			return pTmp;
+	}
+	return nullptr;
+}
+
+CMyNode* CMyList::findByStudentID(const char* pszID)
+{
+	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
+	{
+		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		if (strcmp(pUser->getStudentID(), pszID) == 0)
+			return pTmp;
+	}
+	return nullptr;
+}
+
+CMyNode* CMyList::findByAdmissionYear(const char* pszYear)
+{
+	// 학번 앞 4자리를 입학년도라고 가정 (예: 2023xxxxxx)
+	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
+	{
+		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		const char* id = pUser->getStudentID();
+		if (strncmp(id, pszYear, 4) == 0)
+			return pTmp;
+	}
+	return nullptr;
+}
+
+CMyNode* CMyList::findByBirth(const char* pszBirth)
+{
+	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
+	{
+		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		if (strcmp(pUser->getBirthYear(), pszBirth) == 0)
+			return pTmp;
+	}
+	return nullptr;
+}
+
+CMyNode* CMyList::findByDept(const char* pszDept)
+{
+	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
+	{
+		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		if (strcmp(pUser->getDepartment(), pszDept) == 0)
+			return pTmp;
+	}
+	return nullptr;
+}
+
+// 노드 출력
+void CMyList::printAll()
+{
+	
+	if (m_pHead->pNext == nullptr) {
+		printf("리스트가 비어 있습니다.\n");
+		return;
+	}
+
+	printf("\n%-15s %-10s %-10s %-20s %-12s\n",
+		"Name", "StudentID", "Birth", "Department", "Tel");
+	printf("---------------------------------------------------------------\n");
+
+	CMyIterator it = makeIterator();
+	CUserData* pNode = nullptr;
+
+	while ((pNode = static_cast<CUserData*>(it.GetCurrent())) != nullptr) {
+		pNode->printNode();
+		it.MoveNext();
+	}
+	_getch();
 }

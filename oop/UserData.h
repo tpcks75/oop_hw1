@@ -22,6 +22,9 @@ public:
 	const char* getDepartment(void) const { return strDept; }
 	const char* getTel(void) const { return strTel; }
 
+	// 학번 앞4자리(입학년도) 문자열 반환
+	const char* getAdmissionYear(void);
+
 
 	static int getUserDataCounter(void) { return nUserDataCounter; }
 

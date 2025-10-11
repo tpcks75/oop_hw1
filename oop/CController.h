@@ -16,7 +16,8 @@ public:
     // UI 요청을 처리하는 중간 함수들
     void addUser();
     void removeUser();
-    void searchUser();
+    void searchUser1();
     void showAllUsers();
     void sortByID();
+    void searchUser();
 };
