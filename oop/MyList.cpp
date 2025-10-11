@@ -1,9 +1,14 @@
 #include "MyList.h"
 #include "UserData.h"
 #include "CListFinder.h"
+#include "CLIstPrinter.h"
+#include "SortType.h"
 #include <cstdio>
 #include <cstring>
 #include <conio.h>
+#include <algorithm>       // std::sort
+#include <vector>
+
 
 CMyList::CMyList()
 {
@@ -100,8 +105,7 @@ int CMyList::removeNode(const char* pszKey)
 
 	return 0;
 }
-
-
+/*
 void CMyList::sortByID()
 {
 	// 0개 또는 1개면 정렬 불필요
@@ -161,7 +165,7 @@ void CMyList::sortByID()
 	printf("아무 키나 누르면 메뉴로 돌아갑니다...\n");
 	_getch();
 }
-
+*/
 
 void CMyList::releaseList(void)
 {
@@ -194,6 +198,71 @@ int CMyList::onAddNewNode(CMyNode* pNewNode)
 {
 	return 1;
 }
+
+// 리스트를 벡터로 변환
+std::vector<CMyNode*> CMyList::toVector() {
+	std::vector<CMyNode*> vec;
+	for (CMyNode* p = m_pHead->getNext(); p != nullptr; p = p->getNext()) {
+		vec.push_back(p);
+	}
+	return vec;
+}
+
+// 벡터를 리스트로 변환
+void CMyList::fromVector(const std::vector<CMyNode*>& vec) {
+	if (vec.empty()) return;
+	m_pHead->setNext(vec[0]);
+	for (size_t i = 0; i < vec.size() - 1; ++i)
+		vec[i]->setNext(vec[i + 1]);
+	vec.back()->setNext(nullptr);
+}
+
+// 정렬 함수
+void CMyList::sortBy(SortType type) {
+	// 노드 순회, 컨테이너 삽입
+	auto nodes = toVector();
+
+	std::sort(nodes.begin(), nodes.end(), [type](CMyNode* a, CMyNode* b) {
+		// 데이터필드 접근을 위한 다운캐스팅
+		CUserData* ua = static_cast<CUserData*>(a);
+		CUserData* ub = static_cast<CUserData*>(b);
+
+		switch (type) {
+		case SortType::NAME:
+			return strcmp(ua->getName(), ub->getName()) < 0;
+		case SortType::ID:
+			return strcmp(ua->getStudentID(), ub->getStudentID()) < 0;
+		case SortType::BIRTH:
+			return strcmp(ua->getBirthYear(), ub->getBirthYear()) < 0;
+		case SortType::DEPT:
+			return _stricmp(ua->getDepartment(), ub->getDepartment()) < 0;
+		}
+		return false;
+		});
+
+	fromVector(nodes);
+
+	printf("\nSorting Completed!\n");
+
+	/* 저장	여부 선택
+	CListPrinter printer(*this);
+	printer.printNodes(nodes);
+
+	
+	int choice;
+	printf("\n[1] 저장하고 돌아가기\n[2] 그냥 돌아가기\nSelect: ");
+	scanf_s("%d", &choice);
+
+	if (choice == 1) {
+		printer.saveToFile(nodes, "file1.txt");  //  file1.txt에 저장
+	}
+
+	printf("\nReturning to main menu...\n");
+	_getch(); */
+}
+
+
+
 
 /* CListFinder 생성으로 인한 주석처리
 /////////////////////////////////////////////////  find node

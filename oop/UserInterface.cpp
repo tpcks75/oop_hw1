@@ -16,7 +16,7 @@ CUserInterface::CUserInterface(CController& ctrl)
 int CUserInterface::printMenu() {
     int sel;
     system("cls");
-    printf("[1] Add\n[2] Remove\n[3] Search\n[4] PrintAll\n[5] Sort\n[0] Exit\nSelect: ");
+    printf("[1] Add\n[2] Remove\n[3] Search\n[4] PrintAll\n[5] Sort\n[6] Statistics\n[0] Exit\n>");
     scanf_s("%d", &sel);
     return sel;
 }

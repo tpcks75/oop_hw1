@@ -35,6 +35,11 @@ public:
 	CMyString operator +(const char* pszParam);
 	friend CMyString operator + (const char *, const CMyString &);
 
+	// 부분 문자열 탐색 함수
+	int Find(const char* pszSub) const;
+	
+	const char* c_str() const { return m_pszData; }
+
 	operator const char * () const
 	{
 		return m_pszData;

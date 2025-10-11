@@ -10,17 +10,23 @@
 #include <cstring>
 #include <conio.h>
 #include <cstdlib>
-
-
+#include <vector>
 
 CController::CController(void)
 {
+    // 더미 데이터 세팅
     m_list.addNewNode(new CUserData("Alexander Smith", "2006303001", "2001", "ComputerEng", "01085928369"));
     m_list.addNewNode(new CUserData("Benjamin Brown", "2003303531", "2000", "SoftwareSys", "01073249912"));
     m_list.addNewNode(new CUserData("Charlotte Davis", "2007343001", "2002", "AIResearch", "01015576238"));
     m_list.addNewNode(new CUserData("Dominic Carter", "2003303561", "1999", "MechDesign", "01046825071"));
     m_list.addNewNode(new CUserData("Eleanor Wilson", "2001223001", "2003", "DataScience", "01091352746"));
-
+    m_list.addNewNode(new CUserData("Franklin Moore", "2006303022", "2001", "ComputerEng", "01012223333"));
+    m_list.addNewNode(new CUserData("Grace Hall", "2003303599", "2000", "SoftwareSys", "01023334444"));
+    m_list.addNewNode(new CUserData("Henry Clark", "2008303005", "1999", "MechDesign", "01034445555"));
+    m_list.addNewNode(new CUserData("Isabella Young", "2007343012", "2002", "AIResearch", "01045556666"));
+    m_list.addNewNode(new CUserData("Jack Turner", "2001223015", "2003", "DataScience", "01056667777"));
+    m_list.addNewNode(new CUserData("Karen Adams", "2006303010", "2001", "ComputerEng", "01067778888"));
+    m_list.addNewNode(new CUserData("Liam Scott", "2008303025", "1999", "MechDesign", "01078889999"));
 
 	m_ui = new CUserInterface(*this);
 }
@@ -35,7 +41,8 @@ void CController::run() {
         case 2: removeUser(); break;
         case 3: searchUser(); break;
         case 4: showAllUsers(); break;
-        case 5: sortByID(); break;
+        case 5: sortUsers(); break;
+		case 6: showStatistics(); break;
         }
     } while (input != 0);
 }
@@ -96,9 +103,32 @@ void CController::showAllUsers() {
     */
 }
 
+
+/*
 // Case 5
 void CController::sortByID() {
     m_list.sortByID();
+}
+*/
+
+void CController::sortUsers() {
+
+    system("cls");
+    printf("- Sort -\n1. Sort by name \n2. Sort by StudentID\n3. Sort by Birth\n4. Sort by Department\n> ");
+    int sel;
+    scanf_s("%d", &sel);
+    switch (sel) {
+    case 1: m_list.sortBy(SortType::NAME);
+        break;
+    case 2: m_list.sortBy(SortType::ID); 
+        break;
+    case 3: m_list.sortBy(SortType::BIRTH); 
+        break;
+    case 4: m_list.sortBy(SortType::DEPT); 
+        break;
+    default: puts("잘못된 입력입니다."); _getch(); 
+        break;
+    }
 }
 
 
@@ -113,12 +143,14 @@ void CController::searchUser() {
     system("cls");
     printf("- Search -\n");
     printf("1. Search by name\n");
-    printf("2. Search by student ID (10 digits)\n");
-    printf("3. Search by admission year (4 digits)\n");
-    printf("4. Search by birth year (4 digits)\n");
+    printf("2. Search by student ID\n");
+    printf("3. Search by admission year\n");
+    printf("4. Search by birth year\n");
     printf("5. Search by department name\n");
-    printf("6. List All\n\n");
+    printf("6. List All\n");
+    printf("7. Search by partial name\n\n");
     printf("> ");
+
     scanf_s("%d", &choice);
 
     char key[64] = { 0 };
@@ -162,9 +194,67 @@ void CController::searchUser() {
         printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
         break;
 
+    case 7:
+        printf("Enter partial name: ");
+        scanf_s("%s", key, (unsigned)sizeof(key));  // 검색어 입력 받기
+
+        {
+            auto results = finder.findByPartialName(key);
+
+            if (results.empty()) {
+                printf("\n검색 결과가 없습니다.\n");
+            }
+            else {
+                printf("\n[부분 이름 검색 결과]\n");
+                printf("----------------------------------------------\n");
+                for (auto pNode : results) {
+                    CUserData* user = static_cast<CUserData*>(pNode);
+                    user->printNode();
+                }
+                printf("----------------------------------------------\n");
+                printf("총 %d명 발견됨.\n", (int)results.size());
+            }
+            _getch();
+        }
+        break;
+
     default:
         printf("Invalid choice.\n");
         _getch();
         break;
+    }
+}
+
+void CController::showStatistics() {
+    system("cls");
+    printf("==============================================\n");
+    printf("                 [Statistics]\n");
+    printf("==============================================\n\n");
+    printf("1. Statistics by Admission Year\n");
+    printf("2. Statistics by Birth Year\n");
+    printf("3. Statistics by Department\n\n");
+    printf("0. Return to Main Menu\n");
+    printf("----------------------------------------------\n");
+    printf("Select: ");
+
+    int sel;
+    scanf_s("%d", &sel);
+
+    CListPrinter stprint(m_list);
+
+    switch (sel) {
+    case 1:
+        stprint.printStatisticsByAdmissionYear(m_list);
+        break;
+    case 2:
+        stprint.printStatisticsByBirthYear(m_list);
+        break;
+    case 3:
+        stprint.printStatisticsByDepartment(m_list);
+        break;
+    default:
+        printf("\nReturning to menu...\n");
+        _getch();
+        return;
     }
 }

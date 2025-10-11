@@ -2,6 +2,8 @@
 #include "MyNode.h"
 #include "MyIterator.h"
 #include "CListFinder.h"
+#include "SortType.h"
+#include <vector>
 
 class CListFinder; // 전방 선언
 
@@ -51,4 +53,14 @@ public:
 
 	//노드 출력
 	void printAll();
+
+	// 연결리스트 노드 -> 벡터노드 변환
+	std::vector<CMyNode*> toVector();
+
+	// 벡터노드 -> 연결리스트 노드 변환
+	void fromVector(const std::vector<CMyNode*>& vec);
+
+	//정렬
+	void sortBy(SortType type);
+
 };

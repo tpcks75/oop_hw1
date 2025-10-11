@@ -123,3 +123,11 @@ int CMyString::onSetString(const char *pszParam)
 {
 	return 1;
 }
+
+//부분 문자열 탐색
+int CMyString::Find(const char* pszSub) const {
+	if (!pszSub || !m_pszData) return -1; // 예외 처리
+
+	const char* pos = strstr(m_pszData, pszSub); // 부분 문자열 검색
+	return pos ? static_cast<int>(pos - m_pszData) : -1;
+}
