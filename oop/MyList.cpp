@@ -1,5 +1,6 @@
 #include "MyList.h"
 #include "UserData.h"
+#include "CListFinder.h"
 #include <cstdio>
 #include <cstring>
 #include <conio.h>
@@ -16,8 +17,11 @@ CMyList::~CMyList(void)
 
 int CMyList::addNewNode(CMyNode *pNewNode)
 {
-	// StudentID 기반 중복 체크
-	if (findNode(pNewNode->getKey()) != nullptr)
+	CListFinder finder(*this);
+	auto results = finder.findByStudentID(pNewNode->getKey());
+
+	// StudentID 기반 중복 체크 결과가 1개라도 있으면 중복
+	if (!results.empty())
 	{
 		delete pNewNode;
 		return 0;
@@ -50,7 +54,8 @@ void CMyList::printAll(void)
 
 	_getch();
 }
-*/
+
+
 
 
 CMyNode* CMyList::findNode(const char* pszKey)
@@ -69,6 +74,7 @@ CMyNode* CMyList::findNode(const char* pszKey)
 	return NULL;
 }
 
+*/
 
 
 
@@ -189,6 +195,7 @@ int CMyList::onAddNewNode(CMyNode* pNewNode)
 	return 1;
 }
 
+/* CListFinder 생성으로 인한 주석처리
 /////////////////////////////////////////////////  find node
 CMyNode* CMyList::findByName(const char* pszName)
 {
@@ -246,8 +253,9 @@ CMyNode* CMyList::findByDept(const char* pszDept)
 	}
 	return nullptr;
 }
+*/
 
-// 노드 출력
+/* 노드 출력->CListPrinter로 이관
 void CMyList::printAll()
 {
 	
@@ -269,3 +277,4 @@ void CMyList::printAll()
 	}
 	_getch();
 }
+*/

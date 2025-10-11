@@ -1,9 +1,14 @@
 #pragma once
 #include "MyNode.h"
 #include "MyIterator.h"
+#include "CListFinder.h"
+
+class CListFinder; // 전방 선언
 
 class CMyList
 {
+	friend class CListFinder; // 리스트 검색 전용 클래스 (has-a 관계)
+
 public:
 	CMyList(void);
 	~CMyList(void);
@@ -13,17 +18,21 @@ protected:
 	void releaseList(void);
 	// single linked list 구현을 위한 헤드 포인터
 	CMyNode *m_pHead;
+	CMyNode* m_pTail;
 
 public:
-	// 노드 검색
+	/* CListFinder 생성으로 인한 주석처리
+	// Search를 위한 노드 검색
 	CMyNode* findNode(const char* pszKey);
-
 	CMyNode* findByName(const char* pszName);
 	CMyNode* findByStudentID(const char* pszID);
 	CMyNode* findByAdmissionYear(const char* pszYear);
 	CMyNode* findByBirth(const char* pszBirth);
 	CMyNode* findByDept(const char* pszDept);
+	*/
 
+	// 리스트 노드포인터 반환 getter함수
+	CMyNode* getHead() const { return m_pHead; }
 
 	// 노드 추가 , 이미 존재 시 0, 이름 외의 문자 입력 시 -1 반환
 	int addNewNode(CMyNode *pNewNode);

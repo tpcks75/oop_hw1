@@ -3,11 +3,15 @@
 #include "MyList.h"
 #include "UserData.h"
 #include "MyIterator.h"
+#include "CListFinder.h"
+#include "CListPrinter.h"
 
 #include <cstdio>
 #include <cstring>
 #include <conio.h>
 #include <cstdlib>
+
+
 
 CController::CController(void)
 {
@@ -77,23 +81,14 @@ void CController::removeUser() {
     else
         m_ui->printMessage("삭제 실패. 데이터 없음.");
 }
-// Case 3
-void CController::searchUser1() {
-    char id[32];
-    m_ui->inputName(id);
-    CMyNode* p = m_list.findNode(id);
-    if (p) p->printNode();
-    else m_ui->printMessage("데이터 없음.");
-    printf("\n검색을 완료하였습니다.\n");
-    printf("아무 키나 누르면 메뉴로 돌아갑니다...\n\n");
-    _getch();
-}
-// Case 4 제거 예정
+
+//Case 4 제거 예정
 void CController::showAllUsers() {
 
-    m_list.printAll();
-    /*
-	CMyIterator iter = m_list.makeIterator();
+	CListPrinter printer(m_list);    // Printer 생성 
+	printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
+    
+	/*CMyIterator iter = m_list.makeIterator();
     CUserData* pNode = nullptr;
 
     // model에서 데이터를가져와 UI에 출력요청
@@ -108,9 +103,12 @@ void CController::sortByID() {
 
 
 /// ////////////////////////////////////////
-/// </summary> Search
+/// case 3 - Search
 
 void CController::searchUser() {
+    CListFinder finder(m_list);      // Finder 생성
+    CListPrinter printer(m_list);    // Printer 생성
+
     int choice = 0;
     system("cls");
     printf("- Search -\n");
@@ -124,46 +122,49 @@ void CController::searchUser() {
     scanf_s("%d", &choice);
 
     char key[64] = { 0 };
-    CMyNode* pNode = nullptr;
 
     switch (choice) {
     case 1:
         m_ui->inputName(key);
-        pNode = m_list.findByName(key);
+        printer.printNodes(finder.findByName(key));   
+        //  inline 호출(즉시 반환 → 즉시 전달)
+        //   vector 바로 전달
         break;
+
+        /*
+       m_ui->inputName(key);
+       auto results = finder.findByName(key); //  vector 반환
+       CListPrinter printer(m_list);
+       printer.printNodes(results);            //  다중 결과 출력
+       break;
+        */
     case 2:
         m_ui->inputStudentID(key);
-        pNode = m_list.findByStudentID(key);
+        printer.printNodes(finder.findByStudentID(key));
         break;
+
     case 3:
-        // admissionyear은 userdata에 studentid기반 4자리수반환함수 구성
         m_ui->inputAdmissionYear(key);
-        pNode = m_list.findByAdmissionYear(key);
+        printer.printNodes(finder.findByAdmissionYear(key));
         break;
+
     case 4:
         m_ui->inputBirth(key);
-        pNode = m_list.findByBirth(key);
-        break; 
+        printer.printNodes(finder.findByBirth(key));
+        break;
+
     case 5:
         m_ui->inputDept(key);
-        pNode = m_list.findByDept(key);
+        printer.printNodes(finder.findByDept(key));
         break;
+
     case 6:
-        // 
-        m_list.printAll();
-        return;
+        printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
+        break;
+
     default:
         printf("Invalid choice.\n");
         _getch();
-        return;
+        break;
     }
-
-    if (pNode)
-        // pNode는 MyNode 포인터이므로 UserData로 다운캐스팅
-        ((CUserData*)pNode)->printNode();
-    else
-        printf("\n검색 결과가 없습니다.\n");
-
-    printf("\n아무 키나 누르면 메뉴로 돌아갑니다...\n");
-    _getch();
 }
