@@ -242,8 +242,12 @@ void CMyList::sortBy(SortType type) {
 
 	fromVector(nodes);
 
-	printf("\nSorting Completed!\n");
+	CListPrinter printer(*this);
+	printer.printNodes(nodes);
 
+	//printf("\nSorting Completed!\n");
+	printf("\nReturning to main menu...\n");
+	
 	/* 저장	여부 선택
 	CListPrinter printer(*this);
 	printer.printNodes(nodes);

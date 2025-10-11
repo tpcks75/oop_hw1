@@ -116,6 +116,7 @@ void CListPrinter::printStatisticsByAdmissionYear(CMyList& list) {
         printf("  %s학번 : %d명\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
     printf("  전체 인원 합계 : %d명\n", total);
+    printf("\nReturning to main menu...\n");
     _getch();
 }
 
@@ -140,6 +141,7 @@ void CListPrinter::printStatisticsByBirthYear(CMyList& list) {
         printf("  %s년생 : %d명\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
     printf("  전체 인원 합계 : %d명\n", total);
+    printf("\nReturning to main menu...\n");
     _getch();
 }
 
@@ -164,6 +166,7 @@ void CListPrinter::printStatisticsByDepartment(CMyList& list) {
         printf("  %-20s : %2d명\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
     printf("  전체 인원 합계 : %2d명\n", total);
+    printf("\nReturning to main menu...\n");
     _getch();
 }
 

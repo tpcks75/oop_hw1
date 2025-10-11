@@ -82,7 +82,7 @@ void CController::addUser() {
 // Case 2
 void CController::removeUser() {
     char name[32];
-    m_ui->inputName(name);
+    m_ui->inputStudentID(name);
     if (m_list.removeNode(name))
         m_ui->printMessage("삭제 완료.");
     else
@@ -126,9 +126,10 @@ void CController::sortUsers() {
         break;
     case 4: m_list.sortBy(SortType::DEPT); 
         break;
-    default: puts("잘못된 입력입니다."); _getch(); 
+    default: puts("잘못된 입력입니다.");  
         break;
     }
+    //_getch();
 }
 
 
