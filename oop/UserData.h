@@ -5,18 +5,37 @@
 // CMyNode 클래스의 파생 클래스로 변경
 class CUserData : public CMyNode
 {
+	//생성자
 public:
 	CUserData(void);
-	CUserData(const char* pszName, const char* pszPhone);
+	CUserData(const char* pszName,
+		const char* pszStudentID,
+		const char* pszBirth,
+		const char* pszDept,
+		const char* pszTel);
 	~CUserData(void);
 
+	//getter
 	const char* getName(void) const { return strName; }
-	const char*	getPhone(void) const { return strPhone; }
+	const char* getStudentID(void) const { return strStudentID; }
+	const char* getBirthYear(void) const { return strBirth; }
+	const char* getDepartment(void) const { return strDept; }
+	const char* getTel(void) const { return strTel; }
+
+
 	static int getUserDataCounter(void) { return nUserDataCounter; }
 
+	//객체 생성
 protected:
-	CMyString strName;
-	CMyString strPhone;
+	CMyString strName;        // 이름 (15char)
+	CMyString strStudentID;   // 학번 (10char)
+	CMyString strBirth;   // 생년 (4char)
+	CMyString strDept;  // 학과명
+	CMyString strTel;         // 전화번호 (최대 12자리)
+	// 해당 유효값 충족하지 못할 시 다시 입력받기
+	// 이름, 학번 공백이어선 안됨
+	// 같은 학번 금지(key값)
+	// 같은 학번일 시 Error : Already inserted 출력
 
 	static int nUserDataCounter;
 

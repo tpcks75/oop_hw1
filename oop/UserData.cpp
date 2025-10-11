@@ -9,10 +9,16 @@ CUserData::CUserData(void)
 {
 	nUserDataCounter++;
 }
-
-CUserData::CUserData(const char* pszName, const char* pszPhone)
-	:strName(pszName), strPhone(pszPhone)
-{
+CUserData::CUserData(const char* pszName,
+	const char* pszStudentID,
+	const char* pszBirth,
+	const char* pszDept,
+	const char* pszTel)
+	: strName(pszName),
+	strStudentID(pszStudentID),
+	strBirth(pszBirth),
+	strDept(pszDept),
+	strTel(pszTel) {
 	nUserDataCounter++;
 }
 
@@ -23,19 +29,26 @@ CUserData::~CUserData(void)
 
 const char* CUserData::getKey(void)
 {
-	return this->strName;
+	return this->strStudentID;
 }
 
 void CUserData::printNode(void)
 {
 #ifdef _DEBUG
-	printf("[%p] %s\t%s [%p]\n",
+	printf("[%p] %-15s %-10s %-10s %-20s %-12s [%p]\n",
 		this,
-		// szName, szPhone,
 		(const char*)strName,
-		(const char*)strPhone,
+		(const char*)strStudentID,
+		(const char*)strBirth,
+		(const char*)strDept,
+		(const char*)strTel,
 		getNext());
 #else
-	printf("%s\t%s\n", szName, szPhone);
+	printf("%-15s %-10s %-10s %-20s %-12s\n",
+		(const char*)strName,
+		(const char*)strStudentID,
+		(const char*)strBirth,
+		(const char*)strDept,
+		(const char*)strTel);
 #endif
 }

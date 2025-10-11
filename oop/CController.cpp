@@ -11,10 +11,12 @@
 
 CController::CController(void)
 {
-    m_list.addNewNode(new CUserData("aa", "01"));
-    m_list.addNewNode(new CUserData("bb", "02"));
-    m_list.addNewNode(new CUserData("cc", "03"));
-    m_list.addNewNode(new CUserData("dd", "04"));
+    m_list.addNewNode(new CUserData("Alexander Smith", "2026-68814", "2001", "ComputerEng", "010-8592-8369"));
+    m_list.addNewNode(new CUserData("Benjamin Brown", "2027-54203", "2000", "SoftwareSys", "010-7324-9912"));
+    m_list.addNewNode(new CUserData("Charlotte Davis", "2028-39425", "2002", "AIResearch", "010-1557-6238"));
+    m_list.addNewNode(new CUserData("Dominic Carter", "2029-81247", "1999", "MechDesign", "010-4682-5071"));
+    m_list.addNewNode(new CUserData("Eleanor Wilson", "2023-10563", "2003", "DataScience", "010-9135-2746"));
+
 
 	m_ui = new CUserInterface(*this);
 }
@@ -29,7 +31,7 @@ void CController::run() {
         case 2: removeUser(); break;
         case 3: searchUser(); break;
         case 4: showAllUsers(); break;
-        case 5: sortByName(); break;
+        case 5: sortByID(); break;
         }
     } while (input != 0);
 }
@@ -37,10 +39,16 @@ void CController::run() {
 
 // Model 조작 로직은 Controller가 담당
 void CController::addUser() {
-    char name[32], phone[32];
+    char name[32], id[32], birth[32], dept[64], tel[32];
+    
     m_ui->inputName(name);
-    m_ui->inputPhone(phone);
-    int nResult = m_list.addNewNode(new CUserData(name, phone));
+    m_ui->inputStudentID(id);
+    m_ui->inputBirth(birth);
+    m_ui->inputDept(dept);
+    m_ui->inputTel(tel);
+
+
+    int nResult = m_list.addNewNode(new CUserData(name, id, birth, dept, tel));
     if (nResult == 0)
     {
         puts("ERROR: 이미 존재하는 데이터입니다.");
@@ -55,7 +63,7 @@ void CController::addUser() {
 
     }
 
-    printf("\nSuccessfully added \"%s\" (%s)\n", name, phone);
+    printf("\nSuccessfully added \n");
     printf("아무 키나 누르면 메뉴로 돌아갑니다...\n\n");
     _getch();
 }
@@ -70,9 +78,9 @@ void CController::removeUser() {
 }
 
 void CController::searchUser() {
-    char name[32];
-    m_ui->inputName(name);
-    CMyNode* p = m_list.findNode(name);
+    char id[32];
+    m_ui->inputName(id);
+    CMyNode* p = m_list.findNode(id);
     if (p) p->printNode();
     else m_ui->printMessage("데이터 없음.");
     printf("\n검색을 완료하였습니다.\n");
@@ -89,6 +97,6 @@ void CController::showAllUsers() {
     m_ui->displayUserList(iter);
 }
 
-void CController::sortByName() {
-    m_list.sortByName();
+void CController::sortByID() {
+    m_list.sortByID();
 }

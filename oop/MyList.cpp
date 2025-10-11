@@ -6,7 +6,7 @@
 
 CMyList::CMyList()
 {
-	m_pHead = new CUserData("Dummy", "Head");
+	m_pHead = new CUserData("Dummyaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000");
 }
 
 CMyList::~CMyList(void)
@@ -16,6 +16,7 @@ CMyList::~CMyList(void)
 
 int CMyList::addNewNode(CMyNode *pNewNode)
 {
+	// StudentID 기반 중복 체크
 	if (findNode(pNewNode->getKey()) != nullptr)
 	{
 		delete pNewNode;
@@ -33,7 +34,7 @@ int CMyList::addNewNode(CMyNode *pNewNode)
 	return -1;
 }
 
-/*
+/* NodeList.cpp에서 구현
 void CMyList::printAll(void)
 {
 	CMyNode *pTmp = m_pHead->pNext;
@@ -57,6 +58,7 @@ CMyNode* CMyList::findNode(const char* pszKey)
 
 	while (pTmp != nullptr)
 	{
+		// StudentID가 key
 		if (strcmp(pTmp->getKey(), pszKey) == 0)
 			return pTmp;
 
@@ -90,7 +92,7 @@ int CMyList::removeNode(const char* pszKey)
 }
 
 
-void CMyList::sortByName()
+void CMyList::sortByID()
 {
 	// 0개 또는 1개면 정렬 불필요
 	if (m_pHead == nullptr || m_pHead->pNext == nullptr || m_pHead->pNext->pNext == nullptr) {

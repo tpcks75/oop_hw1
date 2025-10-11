@@ -18,5 +18,5 @@ public:
     void removeUser();
     void searchUser();
     void showAllUsers();
-    void sortByName();
+    void sortByID();
 };

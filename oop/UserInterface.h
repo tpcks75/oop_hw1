@@ -11,8 +11,14 @@ private:
 public:
     CUserInterface(CController& ctrl);
     int printMenu();
+    
     void inputName(char* name);
-    void inputPhone(char* phone);
+    void inputStudentID(char* id);
+    void inputBirth(char* birth);
+    void inputDept(char* dept);
+    void inputTel(char* tel);
+
+
     void printMessage(const char* msg);
     void displayUserList(CMyIterator& it);
 };

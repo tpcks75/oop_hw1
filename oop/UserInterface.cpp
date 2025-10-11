@@ -21,13 +21,30 @@ int CUserInterface::printMenu() {
 }
 
 void CUserInterface::inputName(char* name) {
-    printf("Input name: ");
+    printf("Input Name: ");
     scanf_s("%s", name, 32);
 }
 
-void CUserInterface::inputPhone(char* phone) {
-    printf("Input phone: ");
-    scanf_s("%s", phone, 32);
+void CUserInterface::inputStudentID(char* id) {
+    printf("Input Student ID (10 digits): ");
+    scanf_s("%s", id, 32);
+}
+
+void CUserInterface::inputBirth(char* birth) {
+    printf("Input Birth Year (4 digits): ");
+    scanf_s("%s", birth, 32);
+}
+
+void CUserInterface::inputDept(char* dept) {
+    printf("Input Department: ");
+    getchar(); // 傍归 贸府
+    fgets(dept, 64, stdin);
+    dept[strcspn(dept, "\n")] = 0; // 俺青 力芭
+}
+
+void CUserInterface::inputTel(char* tel) {
+    printf("Input Tel: ");
+    scanf_s("%s", tel, 32);
 }
 
 void CUserInterface::printMessage(const char* msg) {

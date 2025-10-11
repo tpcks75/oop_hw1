@@ -1,5 +1,6 @@
 #pragma once
 
+// 문자열을 객체로 다루기위한 클래스
 class CMyString
 {
 public:

@@ -25,7 +25,7 @@ public:
 	int removeNode(const char* pszKey);
 
 	// 노드 이름기준 버블정렬
-	void sortByName();
+	void sortByID();
 
 	// 노드를 순회하기 위한 열거자를 생성
 	CMyIterator makeIterator(void);
