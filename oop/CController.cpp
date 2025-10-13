@@ -15,18 +15,17 @@
 CController::CController(void)
 {
     // 더미 데이터 세팅
-    m_list.addNewNode(new CUserData("Alexander Smith", "2006303001", "2001", "ComputerEng", "01085928369"));
-    m_list.addNewNode(new CUserData("Benjamin Brown", "2003303531", "2000", "SoftwareSys", "01073249912"));
-    m_list.addNewNode(new CUserData("Charlotte Davis", "2007343001", "2002", "AIResearch", "01015576238"));
-    m_list.addNewNode(new CUserData("Dominic Carter", "2003303561", "1999", "MechDesign", "01046825071"));
-    m_list.addNewNode(new CUserData("Eleanor Wilson", "2001223001", "2003", "DataScience", "01091352746"));
-    m_list.addNewNode(new CUserData("Franklin Moore", "2006303022", "2001", "ComputerEng", "01012223333"));
-    m_list.addNewNode(new CUserData("Grace Hall", "2003303599", "2000", "SoftwareSys", "01023334444"));
-    m_list.addNewNode(new CUserData("Henry Clark", "2008303005", "1999", "MechDesign", "01034445555"));
-    m_list.addNewNode(new CUserData("Isabella Young", "2007343012", "2002", "AIResearch", "01045556666"));
-    m_list.addNewNode(new CUserData("Jack Turner", "2001223015", "2003", "DataScience", "01056667777"));
-    m_list.addNewNode(new CUserData("Karen Adams", "2006303010", "2001", "ComputerEng", "01067778888"));
-    m_list.addNewNode(new CUserData("Liam Scott", "2008303025", "1999", "MechDesign", "01078889999"));
+    m_list.addNewNode(new CUserData("Tomato", "Tomato_Oct13", "Vegetable", "2025-12-10", "LocalFarm", "120", "2500"));
+    m_list.addNewNode(new CUserData("Potato", "Potato_Sep20", "Vegetable", "2025-11-30", "FreshFarm", "200", "1800"));
+    m_list.addNewNode(new CUserData("Milk", "Milk_Dec01", "Dairy", "2025-12-15", "DailyDairy", "80", "1900"));
+    m_list.addNewNode(new CUserData("Chicken", "Chicken_Nov25", "Meat", "2025-12-20", "PoultryPlus", "60", "7500"));
+    m_list.addNewNode(new CUserData("Rice", "Rice_Aug18", "Grain", "2026-01-30", "HanRice", "500", "3200"));
+    m_list.addNewNode(new CUserData("SoySauce", "SoySauce_Jul11", "Seasoning", "2026-03-15", "KFoodMart", "45", "5800"));
+    m_list.addNewNode(new CUserData("Beef", "Beef_Oct09", "Meat", "2025-12-25", "MeatHouse", "40", "12800"));
+    m_list.addNewNode(new CUserData("Cheese", "Cheese_Sep05", "Dairy", "2025-12-18", "DailyDairy", "75", "4200"));
+    m_list.addNewNode(new CUserData("Apple", "Apple_Nov10", "Fruit", "2025-11-25", "FruitKing", "150", "2300"));
+    m_list.addNewNode(new CUserData("Salt", "Salt_Jun07", "Seasoning", "2026-02-10", "KFoodMart", "300", "500"));
+    m_list.addNewNode(new CUserData("Tomato", "Tomato_Nom13", "Vegetable", "2025-12-22", "LocalFarm", "100", "2500"));
 
 	m_ui = new CUserInterface(*this);
 }
@@ -37,11 +36,11 @@ void CController::run() {
     do {
         input = m_ui->printMenu();
         switch (input) {
-        case 1: addUser(); break;
-        case 2: removeUser(); break;
-        case 3: searchUser(); break;
-        case 4: showAllUsers(); break;
-        case 5: sortUsers(); break;
+        case 1: addIngredient(); break;
+        case 2: removeIngredient(); break;
+        case 3: searchIngredient(); break;
+        case 4: showAllIngredients(); break;
+        case 5: sortIngredients(); break;
 		case 6: showStatistics(); break;
         }
     } while (input != 0);
@@ -49,48 +48,49 @@ void CController::run() {
 
 
 // Case 1
-void CController::addUser() {
-    char name[32], id[32], Category[32], Expr[64], Supplier[32];
-    
+void CController::addIngredient() {
+    char name[32], id[32], Category[32], Expr[64], Supplier[32], Count[64], Price[64];
     m_ui->inputName(name);
     m_ui->inputIdt(id);
     m_ui->inputCategory(Category);
     m_ui->inputExpr(Expr);
     m_ui->inputSupplier(Supplier);
+    m_ui->inputCount(Count);
+    m_ui->inputPrice(Price);
 
 
-    int nResult = m_list.addNewNode(new CUserData(name, id, Category, Expr, Supplier));
+    int nResult = m_list.addNewNode(new CUserData(name, id, Category, Expr, Supplier, Count, Price));
     if (nResult == 0)
     {
-        puts("ERROR: 이미 존재하는 데이터입니다.");
+        puts("ERROR: 이미 존재하는 재료입니다.");
         _getch();
 
     }
 
     else if (nResult == -1)
     {
-        puts("ERROR: 잘못입력했습니다.");
+        puts("ERROR: 잘못 입력했습니다.");
         _getch();
 
     }
 
-    printf("\nSuccessfully added \n");
+    printf("\n해당 재료가 성공적으로 등록되었습니다. \n");
     printf("아무 키나 누르면 메뉴로 돌아갑니다...\n\n");
     _getch();
 }
 
 // Case 2
-void CController::removeUser() {
-    char name[32];
-    m_ui->inputIdt(name);
-    if (m_list.removeNode(name))
+void CController::removeIngredient() {
+    char idt[32];
+    m_ui->inputIdt(idt);
+    if (m_list.removeNode(idt))
         m_ui->printMessage("삭제 완료.");
     else
-        m_ui->printMessage("삭제 실패. 데이터 없음.");
+        m_ui->printMessage("삭제 실패. 해당 재료 없음.");
 }
 
 //Case 4 제거 예정
-void CController::showAllUsers() {
+void CController::showAllIngredients() {
 
 	CListPrinter printer(m_list);    // Printer 생성 
 	printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
@@ -111,10 +111,18 @@ void CController::sortByID() {
 }
 */
 
-void CController::sortUsers() {
+void CController::sortIngredients() {
 
     system("cls");
-    printf("- Sort -\n1. Sort by name \n2. Sort by Idt\n3. Sort by Category\n4. Sort by Department\n> ");
+    printf("- Sort -\n");
+    printf("1. Sort by Ingredient Name\n");
+    printf("2. Sort by Ingredient IDentifier\n");
+    printf("3. Sort by Category\n");
+    printf("4. Sort by Expiration Date\n");
+    //printf("5. Sort by Supplier\n");
+    //printf("6. Sort by Quantity\n");
+    //printf("7. Sort by Unit Price\n> ");
+
     int sel;
     scanf_s("%d", &sel);
     switch (sel) {
@@ -136,11 +144,12 @@ void CController::sortUsers() {
 /// ////////////////////////////////////////
 /// case 3 - Search
 
-void CController::searchUser() {
+void CController::searchIngredient() {
     CListFinder finder(m_list);      // Finder 생성
     CListPrinter printer(m_list);    // Printer 생성
 
     int choice = 0;
+    /*
     system("cls");
     printf("- Search -\n");
     printf("1. Search by name\n");
@@ -150,6 +159,15 @@ void CController::searchUser() {
     printf("5. Search by department name\n");
     printf("6. List All\n");
     printf("7. Search by partial name\n\n");
+    printf("> ");*/
+    system("cls");
+    printf("- Search -\n");
+    printf("1. Search by Ingredient Name\n");
+    printf("2. Search by Ingredient ID\n");
+    printf("3. Search by Category\n");
+    printf("4. Search by Supplier\n");
+    printf("5. Partial Search by Ingredient Name\n\n");
+    printf("6. Show All Ingredients\n");
     printf("> ");
 
     scanf_s("%d", &choice);
@@ -157,45 +175,35 @@ void CController::searchUser() {
     char key[64] = { 0 };
 
     switch (choice) {
+
+        //이름
     case 1:
         m_ui->inputName(key);
-        printer.printNodes(finder.findByName(key));   
+        printer.printNodes(finder.findByName(key));
         //  inline 호출(즉시 반환 → 즉시 전달)
         //   vector 바로 전달
         break;
 
-        /*
-       m_ui->inputName(key);
-       auto results = finder.findByName(key); //  vector 반환
-       CListPrinter printer(m_list);
-       printer.printNodes(results);            //  다중 결과 출력
-       break;
-        */
+        //식별자
     case 2:
         m_ui->inputIdt(key);
         printer.printNodes(finder.findByIdt(key));
         break;
 
+        // 분류
     case 3:
-        m_ui->inputAdmissionYear(key);
-        printer.printNodes(finder.findByAdmissionYear(key));
-        break;
-
-    case 4:
         m_ui->inputCategory(key);
         printer.printNodes(finder.findByCategory(key));
         break;
 
+        //공급처
+    case 4:
+        m_ui->inputSupplier(key);
+        printer.printNodes(finder.findBySupplier(key));
+        break;
+
+        // 부분 문자열 검색
     case 5:
-        m_ui->inputExpr(key);
-        printer.printNodes(finder.findByExpr(key));
-        break;
-
-    case 6:
-        printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
-        break;
-
-    case 7:
         printf("Enter partial name: ");
         scanf_s("%s", key, (unsigned)sizeof(key));  // 검색어 입력 받기
 
@@ -213,7 +221,7 @@ void CController::searchUser() {
                     user->printNode();
                 }
                 printf("----------------------------------------------\n");
-                printf("총 %d명 발견됨.\n", (int)results.size());
+                printf("총 %d개 발견됨.\n", (int)results.size());
             }
             _getch();
         }
@@ -223,17 +231,22 @@ void CController::searchUser() {
         printf("Invalid choice.\n");
         _getch();
         break;
+
+    case 6:
+        printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
+        break;
+
     }
 }
 
-void CController::showStatistics() {
+    void CController::showStatistics() {
     system("cls");
     printf("==============================================\n");
     printf("                 [Statistics]\n");
     printf("==============================================\n\n");
     printf("1. Statistics by Admission Year\n");
-    printf("2. Statistics by Category Year\n");
-    printf("3. Statistics by Department\n\n");
+    printf("2. Statistics by Ingredient Category\n");
+    printf("3. Statistics by Supplier\n\n");
     printf("0. Return to Main Menu\n");
     printf("----------------------------------------------\n");
     printf("Select: ");
@@ -245,13 +258,13 @@ void CController::showStatistics() {
 
     switch (sel) {
     case 1:
-        stprint.printStatisticsByAdmissionYear(m_list);
+        stprint.printStatisticsByName(m_list);
         break;
     case 2:
-        stprint.printStatisticsByCategorytmp(m_list);
+        stprint.printStatisticsByCategory(m_list);
         break;
     case 3:
-        stprint.printStatisticsByDepartment(m_list);
+        stprint.printStatisticsBySupplier(m_list);
         break;
     default:
         printf("\nReturning to menu...\n");

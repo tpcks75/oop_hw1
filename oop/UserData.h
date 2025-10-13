@@ -12,7 +12,9 @@ public:
 		const char* pszIdt,
 		const char* pszCategory,
 		const char* pszExpr,
-		const char* pszSupplier);
+		const char* pszSupplier,
+		const char* nCount,
+		const char* price);
 	~CUserData(void);
 
 	//getter
@@ -21,24 +23,28 @@ public:
 	const char* getCategorytmp(void) const { return strCategory; }
 	const char* getDepartment(void) const { return strExpr; }
 	const char* getSupplier(void) const { return strSupplier; }
+	const char* getCount(void) const { return strCount; }
+	const char* getPrice(void) const { return strPrice; }
 
 	// 학번 앞4자리(입학년도) 문자열 반환
 	const char* getAdmissionYear(void);
-
 
 	static int getUserDataCounter(void) { return nUserDataCounter; }
 
 	//객체 생성
 protected:
-	CMyString strName;        // 이름 (15char)
-	CMyString strIdt;   // 학번 (10char)
-	CMyString strCategory;   // 생년 (4char)
-	CMyString strExpr;  // 학과명
-	CMyString strSupplier;         // 전화번호 (최대 12자리)
-	// 해당 유효값 충족하지 못할 시 다시 입력받기
+	CMyString strName;        // 재료이름
+	CMyString strIdt;   // 재료 식별자
+	CMyString strCategory;   // 재료 분류
+	CMyString strExpr;  // 유통기한
+	CMyString strSupplier; //재료 공급처
+	CMyString strCount; // 개수
+	CMyString strPrice; // 단가
+
 	// 이름, 학번 공백이어선 안됨
-	// 같은 학번 금지(key값)
-	// 같은 학번일 시 Error : Already inserted 출력
+	// 같은 식별자 금지 - (key값)
+	// 같은 식별자일 시 Error : Already inserted 출력
+
 
 	static int nUserDataCounter;
 

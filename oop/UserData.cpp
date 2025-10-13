@@ -14,12 +14,18 @@ CUserData::CUserData(const char* pszName,
 	const char* pszIdt,
 	const char* pszCategory,
 	const char* pszExpr,
-	const char* pszSupplier)
+	const char* pszSupplier,
+	const char* nCount,
+	const char* nPrice)
 	: strName(pszName),
 	strIdt(pszIdt),
 	strCategory(pszCategory),
 	strExpr(pszExpr),
-	strSupplier(pszSupplier) {
+	strSupplier(pszSupplier),
+	strCount(nCount),
+	strPrice(nPrice)
+
+{
 	nUserDataCounter++;
 }
 
@@ -36,13 +42,16 @@ const char* CUserData::getKey(void)
 void CUserData::printNode(void)
 {
 #ifdef _DEBUG
-	printf(" %-15s %-10s %-10s %-20s %-12s \n",
+	printf(" %-15s %-10s %-10s %-20s %-12s %5d°³ %8d¿ø \n",
 		(const char*)strName,
 		(const char*)strIdt,
 		(const char*)strCategory,
 		(const char*)strExpr,
 		(const char*)strSupplier,
-		getNext());
+		(const char*)strCount,
+		(const char*)strPrice);
+
+		getNext();
 #else
 	printf("%-15s %-10s %-10s %-20s %-12s\n",
 		(const char*)strName,

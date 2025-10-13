@@ -12,7 +12,7 @@
 
 CMyList::CMyList()
 {
-	m_pHead = new CUserData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000");
+	m_pHead = new CUserData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000", "0000", "0000");
 }
 
 CMyList::~CMyList(void)

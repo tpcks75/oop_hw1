@@ -20,9 +20,9 @@ public:
     void printNodes(const std::vector<CMyNode*>& nodes);
 
     // 통계 출력
-    void printStatisticsByAdmissionYear(CMyList& list);
-    void printStatisticsByCategorytmp(CMyList& list);
-    void printStatisticsByDepartment(CMyList& list);
+    void printStatisticsByName(CMyList& list);
+    void printStatisticsByCategory(CMyList& list);
+    void printStatisticsBySupplier(CMyList& list);
 
     // 검색 결과 파일 저장
     void saveToFile(const std::vector<CMyNode*>& nodes, const char* filename);

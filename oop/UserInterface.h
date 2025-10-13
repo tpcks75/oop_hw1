@@ -17,7 +17,9 @@ public:
     void inputCategory(char* Category);
     void inputExpr(char* Expr);
     void inputSupplier(char* Supplier);
-    void inputAdmissionYear(char* year);
+    //void inputAdmissionYear(char* year);
+    void inputCount(char* count);
+    void inputPrice(char* price);
 
     void printMessage(const char* msg);
     void displayUserList(CMyIterator& it);

@@ -29,7 +29,7 @@ std::vector<CMyNode*> CListFinder::findByName(const char* pszName)
     return results; //  출력은 하지 않고 결과만 반환
 }
 
-// 학번으로 검색
+// 식별자로 검색
 std::vector<CMyNode*> CListFinder::findByIdt(const char* pszID)
 {
     std::vector<CMyNode*> results;
@@ -38,7 +38,7 @@ std::vector<CMyNode*> CListFinder::findByIdt(const char* pszID)
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
         CUserData* pUser = static_cast<CUserData*>(pTmp);
-        if (strcmp(pUser->getKey(), pszID) == 0)
+        if (strcmp(pUser->getIdt(), pszID) == 0)
         {
             results.push_back(pTmp);
         }
@@ -47,25 +47,8 @@ std::vector<CMyNode*> CListFinder::findByIdt(const char* pszID)
     return results;
 }
 
-// 입학년도(학번 앞 4자리)로 검색
-std::vector<CMyNode*> CListFinder::findByAdmissionYear(const char* pszYear)
-{
-    std::vector<CMyNode*> results;
 
-    for (CMyNode* pTmp = m_list.getHead()->getNext();
-        pTmp != nullptr; pTmp = pTmp->getNext())
-    {
-        CUserData* pUser = static_cast<CUserData*>(pTmp);
-        if (strncmp(pUser->getAdmissionYear(), pszYear, 4) == 0)
-        {
-            results.push_back(pTmp);
-        }
-    }
-
-    return results;
-}
-
-// 생년으로 검색
+// 목록으로 검색
 std::vector<CMyNode*> CListFinder::findByCategory(const char* pszCategory)
 {
     std::vector<CMyNode*> results;
@@ -74,7 +57,7 @@ std::vector<CMyNode*> CListFinder::findByCategory(const char* pszCategory)
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
         CUserData* pUser = static_cast<CUserData*>(pTmp);
-        if (strcmp(pUser->getCategorytmp(), pszCategory) == 0)
+        if (_stricmp(pUser->getCategorytmp(), pszCategory) == 0)
         {
             results.push_back(pTmp);
         }
@@ -82,8 +65,8 @@ std::vector<CMyNode*> CListFinder::findByCategory(const char* pszCategory)
 
     return results;
 }
-// 학과로 검색
-std::vector<CMyNode*> CListFinder::findByExpr(const char* pszExpr)
+// 공급처로 검색
+std::vector<CMyNode*> CListFinder::findBySupplier(const char* pszExpr)
 {
     std::vector<CMyNode*> results;
 
@@ -91,7 +74,7 @@ std::vector<CMyNode*> CListFinder::findByExpr(const char* pszExpr)
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
         CUserData* pUser = static_cast<CUserData*>(pTmp);
-        if (_stricmp(pUser->getDepartment(), pszExpr) == 0)
+        if (_stricmp(pUser->getSupplier(), pszExpr) == 0)
         {
             results.push_back(pTmp);
         }
