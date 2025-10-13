@@ -1,2 +1,2 @@
 #pragma once
-enum class SortType { NAME, ID, BIRTH, DEPT };
+enum class SortType { NAME, ID, Category, Expr };

@@ -13,10 +13,10 @@ public:
     int printMenu();
     
     void inputName(char* name);
-    void inputStudentID(char* id);
-    void inputBirth(char* birth);
-    void inputDept(char* dept);
-    void inputTel(char* tel);
+    void inputIdt(char* id);
+    void inputCategory(char* Category);
+    void inputExpr(char* Expr);
+    void inputSupplier(char* Supplier);
     void inputAdmissionYear(char* year);
 
     void printMessage(const char* msg);

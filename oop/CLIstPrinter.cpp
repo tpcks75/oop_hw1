@@ -11,7 +11,7 @@
 #define PRINT_HEADER(title) \
     printf("\n[Print - %s]\n", title); \
     printf("%-15s %-10s %-10s %-20s %-12s\n", \
-           "Name", "StudentID", "Birth", "Department", "Tel"); \
+           "Name", "Idt", "Category", "Department", "Supplier"); \
     printf("---------------------------------------------------------------\n")
 
 #define PRINT_FOOTER() \
@@ -104,7 +104,7 @@ void CListPrinter::printStatisticsByAdmissionYear(CMyList& list) {
     for (CMyNode* p = list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
         CUserData* u = static_cast<CUserData*>(p);
         // 학번 앞 4자리 추출
-        std::string admissionYear(u->getStudentID(), 4);
+        std::string admissionYear(u->getIdt(), 4);
         admissionCount[admissionYear]++;
         total++;
     }
@@ -121,23 +121,23 @@ void CListPrinter::printStatisticsByAdmissionYear(CMyList& list) {
 }
 
 // 출생연도별 통계
-void CListPrinter::printStatisticsByBirthYear(CMyList& list) {
-    std::map<std::string, int> birthCount;
+void CListPrinter::printStatisticsByCategorytmp(CMyList& list) {
+    std::map<std::string, int> CategoryCount;
     int total = 0;
 
     for (CMyNode* p = list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
         CUserData* u = static_cast<CUserData*>(p);
 
         // 출생년도 (예: "2001") 문자열 그대로 사용
-        std::string birthYear = u->getBirthYear();  // getBirthYear()이 const char* 반환 시 그대로 가능
-        birthCount[birthYear]++;
+        std::string Categorytmp = u->getCategorytmp();  // getCategorytmp()이 const char* 반환 시 그대로 가능
+        CategoryCount[Categorytmp]++;
         total++;
     }
 
     system("cls");
     printf(" [출생년도별 통계]\n");
     printf("----------------------------------------------\n");
-    for (auto& pair : birthCount)
+    for (auto& pair : CategoryCount)
         printf("  %s년생 : %d명\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
     printf("  전체 인원 합계 : %d명\n", total);
@@ -147,22 +147,22 @@ void CListPrinter::printStatisticsByBirthYear(CMyList& list) {
 
 // 학과별 통계
 void CListPrinter::printStatisticsByDepartment(CMyList& list) {
-    std::map<std::string, int> deptCount;
+    std::map<std::string, int> ExprCount;
     int total = 0;
 
     for (CMyNode* p = list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
         CUserData* u = static_cast<CUserData*>(p);
 
         // 학과명 문자열 그대로 사용
-        std::string dept = u->getDepartment();   // getDepartment()이 const char* 반환 시 그대로 가능
-        deptCount[dept]++;
+        std::string Expr = u->getDepartment();   // getDepartment()이 const char* 반환 시 그대로 가능
+        ExprCount[Expr]++;
         total++;
     }
 
     system("cls");
     printf(" [학과별 통계]\n");
     printf("----------------------------------------------\n");
-    for (auto& pair : deptCount)
+    for (auto& pair : ExprCount)
         printf("  %-20s : %2d명\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
     printf("  전체 인원 합계 : %2d명\n", total);
@@ -194,14 +194,14 @@ void CListPrinter::saveToFile(const std::vector<CMyNode*>& nodes, const char* fi
         localTime.tm_sec);
 
     fprintf(fp, "%-15s %-10s %-10s %-20s %-12s\n",
-        "Name", "StudentID", "Birth", "Department", "Tel");
+        "Name", "Idt", "Category", "Department", "Supplier");
     fprintf(fp, "================================================================\n");
 
     for (CMyNode* node : nodes) {
         CUserData* u = static_cast<CUserData*>(node);
         fprintf(fp, "%-15s %-10s %-10s %-20s %-12s\n",
-            u->getName(), u->getStudentID(), u->getBirthYear(),
-            u->getDepartment(), u->getTel());
+            u->getName(), u->getIdt(), u->getCategorytmp(),
+            u->getDepartment(), u->getSupplier());
     }
 
     fclose(fp);

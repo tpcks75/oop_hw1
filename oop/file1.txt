@@ -1,0 +1,189 @@
+
+
+============== [Record Time: 2025-10-11 22:07:03] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+
+
+============== [Record Time: 2025-10-11 22:07:58] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+
+
+============== [Record Time: 2025-10-12 01:00:03] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+
+
+============== [Record Time: 2025-10-12 01:00:10] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+
+
+============== [Record Time: 2025-10-12 01:00:16] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+
+
+============== [Record Time: 2025-10-12 01:02:54] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Lionel Messi    2001000001 2001       Computer Science     01051515152 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+
+
+============== [Record Time: 2025-10-12 01:03:09] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Lionel Messi    2001000001 2001       Computer Science     01051515152 
+
+
+============== [Record Time: 2025-10-12 01:03:21] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Lionel Messi    2001000001 2001       Computer Science     01051515152 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+
+
+============== [Record Time: 2025-10-12 01:03:29] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Lionel Messi    2001000001 2001       Computer Science     01051515152 
+
+
+============== [Record Time: 2025-10-12 01:03:39] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Lionel Messi    2001000001 2001       Computer Science     01051515152 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+
+
+============== [Record Time: 2025-10-12 01:03:46] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Lionel Messi    2001000001 2001       Computer Science     01051515152 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+
+
+============== [Record Time: 2025-10-13 13:24:25] ==============
+Name            StudentID  Birth      Department           Tel         
+================================================================
+Liam Scott      2008303025 1999       MechDesign           01078889999 
+Karen Adams     2006303010 2001       ComputerEng          01067778888 
+Jack Turner     2001223015 2003       DataScience          01056667777 
+Isabella Young  2007343012 2002       AIResearch           01045556666 
+Henry Clark     2008303005 1999       MechDesign           01034445555 
+Grace Hall      2003303599 2000       SoftwareSys          01023334444 
+Franklin Moore  2006303022 2001       ComputerEng          01012223333 
+Eleanor Wilson  2001223001 2003       DataScience          01091352746 
+Dominic Carter  2003303561 1999       MechDesign           01046825071 
+Charlotte Davis 2007343001 2002       AIResearch           01015576238 
+Benjamin Brown  2003303531 2000       SoftwareSys          01073249912 
+Alexander Smith 2006303001 2001       ComputerEng          01085928369 

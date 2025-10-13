@@ -21,7 +21,7 @@ public:
 
     // 통계 출력
     void printStatisticsByAdmissionYear(CMyList& list);
-    void printStatisticsByBirthYear(CMyList& list);
+    void printStatisticsByCategorytmp(CMyList& list);
     void printStatisticsByDepartment(CMyList& list);
 
     // 검색 결과 파일 저장

@@ -27,10 +27,10 @@ public:
 	// Search를 위한 노드 검색
 	CMyNode* findNode(const char* pszKey);
 	CMyNode* findByName(const char* pszName);
-	CMyNode* findByStudentID(const char* pszID);
+	CMyNode* findByIdt(const char* pszID);
 	CMyNode* findByAdmissionYear(const char* pszYear);
-	CMyNode* findByBirth(const char* pszBirth);
-	CMyNode* findByDept(const char* pszDept);
+	CMyNode* findByCategory(const char* pszCategory);
+	CMyNode* findByExpr(const char* pszExpr);
 	*/
 
 	// 리스트 노드포인터 반환 getter함수

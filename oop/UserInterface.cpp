@@ -43,7 +43,7 @@ void CUserInterface::inputName(char* name) {
     }
 }
 
-void CUserInterface::inputStudentID(char* id) {
+void CUserInterface::inputIdt(char* id) {
     while (true) {
         
         printf("Input Student ID (10 digits): ");
@@ -71,23 +71,23 @@ void CUserInterface::inputStudentID(char* id) {
     }
 }
 
-void CUserInterface::inputBirth(char* birth) {
+void CUserInterface::inputCategory(char* Category) {
     while (true) {
        
-        printf("Input Birth Year (4 digits): ");
-        scanf_s("%s", birth, 32);
+        printf("Input Category Year (4 digits): ");
+        scanf_s("%s", Category, 32);
 
-        size_t len = strlen(birth);
+        size_t len = strlen(Category);
         bool allDigits = true;
         for (size_t i = 0; i < len; ++i) {
-            if (!isdigit((unsigned char)birth[i])) {
+            if (!isdigit((unsigned char)Category[i])) {
                 allDigits = false;
                 break;
             }
         }
 
         if (!allDigits || len != 4) {
-            printf("Error: Invalid birth year format.\n");
+            printf("Error: Invalid Category year format.\n");
             printf("Press any key to retry...\n\n");
             _getch();
 
@@ -99,23 +99,23 @@ void CUserInterface::inputBirth(char* birth) {
     }
 }
 
-void CUserInterface::inputDept(char* dept) {
+void CUserInterface::inputExpr(char* Expr) {
     printf("Input Department (공백 허용): ");
     getchar(); // 이전 입력의 개행 제거
-    fgets(dept, 64, stdin); // scanf는 공백 포함 불가.
-    dept[strcspn(dept, "\n")] = 0; // 개행 제거
+    fgets(Expr, 64, stdin); // scanf는 공백 포함 불가.
+    Expr[strcspn(Expr, "\n")] = 0; // 개행 제거
 }
 
-void CUserInterface::inputTel(char* tel) {
+void CUserInterface::inputSupplier(char* Supplier) {
     while (true) {
 
-        printf("Input Tel : ");
-        scanf_s("%s", tel, 32);
+        printf("Input Supplier : ");
+        scanf_s("%s", Supplier, 32);
 
-        size_t len = strlen(tel);
+        size_t len = strlen(Supplier);
         bool allDigits = true;
         for (size_t i = 0; i < len; ++i) {
-            if (!isdigit((unsigned char)tel[i])) {
+            if (!isdigit((unsigned char)Supplier[i])) {
                 allDigits = false;
                 break;
             }

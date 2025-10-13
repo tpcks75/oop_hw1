@@ -8,3 +8,8 @@
 *.ilk
 *.log
 *.aps
+*.tlog
+*.db
+*.vc.db
+*.vs/
+*x64/

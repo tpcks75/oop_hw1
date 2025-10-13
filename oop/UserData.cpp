@@ -11,15 +11,15 @@ CUserData::CUserData(void)
 	nUserDataCounter++;
 }
 CUserData::CUserData(const char* pszName,
-	const char* pszStudentID,
-	const char* pszBirth,
-	const char* pszDept,
-	const char* pszTel)
+	const char* pszIdt,
+	const char* pszCategory,
+	const char* pszExpr,
+	const char* pszSupplier)
 	: strName(pszName),
-	strStudentID(pszStudentID),
-	strBirth(pszBirth),
-	strDept(pszDept),
-	strTel(pszTel) {
+	strIdt(pszIdt),
+	strCategory(pszCategory),
+	strExpr(pszExpr),
+	strSupplier(pszSupplier) {
 	nUserDataCounter++;
 }
 
@@ -30,7 +30,7 @@ CUserData::~CUserData(void)
 
 const char* CUserData::getKey(void)
 {
-	return this->strStudentID;
+	return this->strIdt;
 }
 
 void CUserData::printNode(void)
@@ -38,25 +38,25 @@ void CUserData::printNode(void)
 #ifdef _DEBUG
 	printf(" %-15s %-10s %-10s %-20s %-12s \n",
 		(const char*)strName,
-		(const char*)strStudentID,
-		(const char*)strBirth,
-		(const char*)strDept,
-		(const char*)strTel,
+		(const char*)strIdt,
+		(const char*)strCategory,
+		(const char*)strExpr,
+		(const char*)strSupplier,
 		getNext());
 #else
 	printf("%-15s %-10s %-10s %-20s %-12s\n",
 		(const char*)strName,
-		(const char*)strStudentID,
-		(const char*)strBirth,
-		(const char*)strDept,
-		(const char*)strTel);
+		(const char*)strIdt,
+		(const char*)strCategory,
+		(const char*)strExpr,
+		(const char*)strSupplier);
 #endif
 }
 
 const char* CUserData::getAdmissionYear(void)
 {
 	static char szYear[5] = { 0 };  // 4ÀÚ¸® + null
-	const char* id = strStudentID.getString();
+	const char* id = strIdt.getString();
 
 	if (id == nullptr || std::strlen(id) < 4)
 		return "";

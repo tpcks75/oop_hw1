@@ -30,7 +30,7 @@ std::vector<CMyNode*> CListFinder::findByName(const char* pszName)
 }
 
 // 학번으로 검색
-std::vector<CMyNode*> CListFinder::findByStudentID(const char* pszID)
+std::vector<CMyNode*> CListFinder::findByIdt(const char* pszID)
 {
     std::vector<CMyNode*> results;
 
@@ -66,7 +66,7 @@ std::vector<CMyNode*> CListFinder::findByAdmissionYear(const char* pszYear)
 }
 
 // 생년으로 검색
-std::vector<CMyNode*> CListFinder::findByBirth(const char* pszBirth)
+std::vector<CMyNode*> CListFinder::findByCategory(const char* pszCategory)
 {
     std::vector<CMyNode*> results;
 
@@ -74,7 +74,7 @@ std::vector<CMyNode*> CListFinder::findByBirth(const char* pszBirth)
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
         CUserData* pUser = static_cast<CUserData*>(pTmp);
-        if (strcmp(pUser->getBirthYear(), pszBirth) == 0)
+        if (strcmp(pUser->getCategorytmp(), pszCategory) == 0)
         {
             results.push_back(pTmp);
         }
@@ -83,7 +83,7 @@ std::vector<CMyNode*> CListFinder::findByBirth(const char* pszBirth)
     return results;
 }
 // 학과로 검색
-std::vector<CMyNode*> CListFinder::findByDept(const char* pszDept)
+std::vector<CMyNode*> CListFinder::findByExpr(const char* pszExpr)
 {
     std::vector<CMyNode*> results;
 
@@ -91,7 +91,7 @@ std::vector<CMyNode*> CListFinder::findByDept(const char* pszDept)
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
         CUserData* pUser = static_cast<CUserData*>(pTmp);
-        if (_stricmp(pUser->getDepartment(), pszDept) == 0)
+        if (_stricmp(pUser->getDepartment(), pszExpr) == 0)
         {
             results.push_back(pTmp);
         }

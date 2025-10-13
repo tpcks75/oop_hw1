@@ -26,7 +26,7 @@ public:
    1. Search by name
    2. Search by student ID
    3. Search by admission year
-   4. Search by birth year
+   4. Search by Category year
    5. Search by department name
    6. List All
     */

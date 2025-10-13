@@ -23,9 +23,9 @@ CMyList::~CMyList(void)
 int CMyList::addNewNode(CMyNode *pNewNode)
 {
 	CListFinder finder(*this);
-	auto results = finder.findByStudentID(pNewNode->getKey());
+	auto results = finder.findByIdt(pNewNode->getKey());
 
-	// StudentID 기반 중복 체크 결과가 1개라도 있으면 중복
+	// Idt 기반 중복 체크 결과가 1개라도 있으면 중복
 	if (!results.empty())
 	{
 		delete pNewNode;
@@ -69,7 +69,7 @@ CMyNode* CMyList::findNode(const char* pszKey)
 
 	while (pTmp != nullptr)
 	{
-		// StudentID가 key
+		// Idt가 key
 		if (strcmp(pTmp->getKey(), pszKey) == 0)
 			return pTmp;
 
@@ -231,10 +231,10 @@ void CMyList::sortBy(SortType type) {
 		case SortType::NAME:
 			return strcmp(ua->getName(), ub->getName()) < 0;
 		case SortType::ID:
-			return strcmp(ua->getStudentID(), ub->getStudentID()) < 0;
-		case SortType::BIRTH:
-			return strcmp(ua->getBirthYear(), ub->getBirthYear()) < 0;
-		case SortType::DEPT:
+			return strcmp(ua->getIdt(), ub->getIdt()) < 0;
+		case SortType::Category:
+			return strcmp(ua->getCategorytmp(), ub->getCategorytmp()) < 0;
+		case SortType::Expr:
 			return _stricmp(ua->getDepartment(), ub->getDepartment()) < 0;
 		}
 		return false;
@@ -281,12 +281,12 @@ CMyNode* CMyList::findByName(const char* pszName)
 	return nullptr;
 }
 
-CMyNode* CMyList::findByStudentID(const char* pszID)
+CMyNode* CMyList::findByIdt(const char* pszID)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
 		CUserData* pUser = static_cast<CUserData*>(pTmp);
-		if (strcmp(pUser->getStudentID(), pszID) == 0)
+		if (strcmp(pUser->getIdt(), pszID) == 0)
 			return pTmp;
 	}
 	return nullptr;
@@ -298,30 +298,30 @@ CMyNode* CMyList::findByAdmissionYear(const char* pszYear)
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
 		CUserData* pUser = static_cast<CUserData*>(pTmp);
-		const char* id = pUser->getStudentID();
+		const char* id = pUser->getIdt();
 		if (strncmp(id, pszYear, 4) == 0)
 			return pTmp;
 	}
 	return nullptr;
 }
 
-CMyNode* CMyList::findByBirth(const char* pszBirth)
+CMyNode* CMyList::findByCategory(const char* pszCategory)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
 		CUserData* pUser = static_cast<CUserData*>(pTmp);
-		if (strcmp(pUser->getBirthYear(), pszBirth) == 0)
+		if (strcmp(pUser->getCategorytmp(), pszCategory) == 0)
 			return pTmp;
 	}
 	return nullptr;
 }
 
-CMyNode* CMyList::findByDept(const char* pszDept)
+CMyNode* CMyList::findByExpr(const char* pszExpr)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
 		CUserData* pUser = static_cast<CUserData*>(pTmp);
-		if (strcmp(pUser->getDepartment(), pszDept) == 0)
+		if (strcmp(pUser->getDepartment(), pszExpr) == 0)
 			return pTmp;
 	}
 	return nullptr;
@@ -338,7 +338,7 @@ void CMyList::printAll()
 	}
 
 	printf("\n%-15s %-10s %-10s %-20s %-12s\n",
-		"Name", "StudentID", "Birth", "Department", "Tel");
+		"Name", "Idt", "Category", "Department", "Supplier");
 	printf("---------------------------------------------------------------\n");
 
 	CMyIterator it = makeIterator();

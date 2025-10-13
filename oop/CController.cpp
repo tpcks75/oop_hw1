@@ -50,16 +50,16 @@ void CController::run() {
 
 // Case 1
 void CController::addUser() {
-    char name[32], id[32], birth[32], dept[64], tel[32];
+    char name[32], id[32], Category[32], Expr[64], Supplier[32];
     
     m_ui->inputName(name);
-    m_ui->inputStudentID(id);
-    m_ui->inputBirth(birth);
-    m_ui->inputDept(dept);
-    m_ui->inputTel(tel);
+    m_ui->inputIdt(id);
+    m_ui->inputCategory(Category);
+    m_ui->inputExpr(Expr);
+    m_ui->inputSupplier(Supplier);
 
 
-    int nResult = m_list.addNewNode(new CUserData(name, id, birth, dept, tel));
+    int nResult = m_list.addNewNode(new CUserData(name, id, Category, Expr, Supplier));
     if (nResult == 0)
     {
         puts("ERROR: 이미 존재하는 데이터입니다.");
@@ -82,7 +82,7 @@ void CController::addUser() {
 // Case 2
 void CController::removeUser() {
     char name[32];
-    m_ui->inputStudentID(name);
+    m_ui->inputIdt(name);
     if (m_list.removeNode(name))
         m_ui->printMessage("삭제 완료.");
     else
@@ -114,7 +114,7 @@ void CController::sortByID() {
 void CController::sortUsers() {
 
     system("cls");
-    printf("- Sort -\n1. Sort by name \n2. Sort by StudentID\n3. Sort by Birth\n4. Sort by Department\n> ");
+    printf("- Sort -\n1. Sort by name \n2. Sort by Idt\n3. Sort by Category\n4. Sort by Department\n> ");
     int sel;
     scanf_s("%d", &sel);
     switch (sel) {
@@ -122,9 +122,9 @@ void CController::sortUsers() {
         break;
     case 2: m_list.sortBy(SortType::ID); 
         break;
-    case 3: m_list.sortBy(SortType::BIRTH); 
+    case 3: m_list.sortBy(SortType::Category); 
         break;
-    case 4: m_list.sortBy(SortType::DEPT); 
+    case 4: m_list.sortBy(SortType::Expr); 
         break;
     default: puts("잘못된 입력입니다.");  
         break;
@@ -146,7 +146,7 @@ void CController::searchUser() {
     printf("1. Search by name\n");
     printf("2. Search by student ID\n");
     printf("3. Search by admission year\n");
-    printf("4. Search by birth year\n");
+    printf("4. Search by Category year\n");
     printf("5. Search by department name\n");
     printf("6. List All\n");
     printf("7. Search by partial name\n\n");
@@ -172,8 +172,8 @@ void CController::searchUser() {
        break;
         */
     case 2:
-        m_ui->inputStudentID(key);
-        printer.printNodes(finder.findByStudentID(key));
+        m_ui->inputIdt(key);
+        printer.printNodes(finder.findByIdt(key));
         break;
 
     case 3:
@@ -182,13 +182,13 @@ void CController::searchUser() {
         break;
 
     case 4:
-        m_ui->inputBirth(key);
-        printer.printNodes(finder.findByBirth(key));
+        m_ui->inputCategory(key);
+        printer.printNodes(finder.findByCategory(key));
         break;
 
     case 5:
-        m_ui->inputDept(key);
-        printer.printNodes(finder.findByDept(key));
+        m_ui->inputExpr(key);
+        printer.printNodes(finder.findByExpr(key));
         break;
 
     case 6:
@@ -232,7 +232,7 @@ void CController::showStatistics() {
     printf("                 [Statistics]\n");
     printf("==============================================\n\n");
     printf("1. Statistics by Admission Year\n");
-    printf("2. Statistics by Birth Year\n");
+    printf("2. Statistics by Category Year\n");
     printf("3. Statistics by Department\n\n");
     printf("0. Return to Main Menu\n");
     printf("----------------------------------------------\n");
@@ -248,7 +248,7 @@ void CController::showStatistics() {
         stprint.printStatisticsByAdmissionYear(m_list);
         break;
     case 2:
-        stprint.printStatisticsByBirthYear(m_list);
+        stprint.printStatisticsByCategorytmp(m_list);
         break;
     case 3:
         stprint.printStatisticsByDepartment(m_list);
