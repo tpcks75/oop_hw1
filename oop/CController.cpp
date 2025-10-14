@@ -15,17 +15,18 @@
 CController::CController(void)
 {
     // 더미 데이터 세팅
-    m_list.addNewNode(new CUserData("Tomato", "Tomato_Oct13", "Vegetable", "2025-12-10", "LocalFarm", "120", "2500"));
-    m_list.addNewNode(new CUserData("Potato", "Potato_Sep20", "Vegetable", "2025-11-30", "FreshFarm", "200", "1800"));
-    m_list.addNewNode(new CUserData("Milk", "Milk_Dec01", "Dairy", "2025-12-15", "DailyDairy", "80", "1900"));
-    m_list.addNewNode(new CUserData("Chicken", "Chicken_Nov25", "Meat", "2025-12-20", "PoultryPlus", "60", "7500"));
-    m_list.addNewNode(new CUserData("Rice", "Rice_Aug18", "Grain", "2026-01-30", "HanRice", "500", "3200"));
-    m_list.addNewNode(new CUserData("SoySauce", "SoySauce_Jul11", "Seasoning", "2026-03-15", "KFoodMart", "45", "5800"));
-    m_list.addNewNode(new CUserData("Beef", "Beef_Oct09", "Meat", "2025-12-25", "MeatHouse", "40", "12800"));
-    m_list.addNewNode(new CUserData("Cheese", "Cheese_Sep05", "Dairy", "2025-12-18", "DailyDairy", "75", "4200"));
-    m_list.addNewNode(new CUserData("Apple", "Apple_Nov10", "Fruit", "2025-11-25", "FruitKing", "150", "2300"));
-    m_list.addNewNode(new CUserData("Salt", "Salt_Jun07", "Seasoning", "2026-02-10", "KFoodMart", "300", "500"));
-    m_list.addNewNode(new CUserData("Tomato", "Tomato_Nom13", "Vegetable", "2025-12-22", "LocalFarm", "100", "2500"));
+
+
+    m_list.addNewNode(new CUserData("Tomato", "Tomato_1005", "Vegetable", "20251005", "LocalFarm", "120", "2500"));
+    m_list.addNewNode(new CUserData("Milk", "Milk_1010", "Dairy", "20251010", "DailyDairy", "60", "1900"));
+    m_list.addNewNode(new CUserData("Tomato", "Tomato_1018", "Vegetable", "20251018", "LocalFarm", "150", "2600"));
+    m_list.addNewNode(new CUserData("Cheese", "Cheese_1020", "Dairy", "20251020", "DailyDairy", "75", "4100"));
+    m_list.addNewNode(new CUserData("Apple", "Apple_1022", "Fruit", "20251022", "FruitKing", "130", "2300"));
+    m_list.addNewNode(new CUserData("Beef", "Beef_1025", "Meat", "20251025", "MeatHouse", "40", "12800"));
+    m_list.addNewNode(new CUserData("SoySauce", "Soy_1030", "Seasoning", "20251030", "KFoodMart", "55", "5800"));
+    m_list.addNewNode(new CUserData("Salt", "Salt_1102", "Seasoning", "20251102", "KFoodMart", "300", "500"));
+    m_list.addNewNode(new CUserData("Cabbage", "Cabbage_1110", "Vegetable", "20251110", "LocalFarm", "90", "2100"));
+    m_list.addNewNode(new CUserData("Chicken", "Chicken_1115", "Meat", "20251115", "PoultryPlus", "80", "7500"));
 
 	m_ui = new CUserInterface(*this);
 }
@@ -42,6 +43,8 @@ void CController::run() {
         case 4: showAllIngredients(); break;
         case 5: sortIngredients(); break;
 		case 6: showStatistics(); break;
+        case 7: checkIngredientExpiry(); break;
+        case 8: showStatistics(); break;
         }
     } while (input != 0);
 }
@@ -144,7 +147,8 @@ void CController::sortIngredients() {
 /// ////////////////////////////////////////
 /// case 3 - Search
 
-void CController::searchIngredient() {
+void CController::searchIngredient() 
+{
     CListFinder finder(m_list);      // Finder 생성
     CListPrinter printer(m_list);    // Printer 생성
 
@@ -168,6 +172,8 @@ void CController::searchIngredient() {
     printf("4. Search by Supplier\n");
     printf("5. Partial Search by Ingredient Name\n\n");
     printf("6. Show All Ingredients\n");
+    printf("7. 유통기한임박 재료표기\n");
+    printf("8.소진예정 재료 확인\n");
     printf("> ");
 
     scanf_s("%d", &choice);
@@ -239,12 +245,12 @@ void CController::searchIngredient() {
     }
 }
 
-    void CController::showStatistics() {
+void CController::showStatistics() {
     system("cls");
     printf("==============================================\n");
     printf("                 [Statistics]\n");
     printf("==============================================\n\n");
-    printf("1. Statistics by Admission Year\n");
+    printf("1. Statistics by Ingredient\n");
     printf("2. Statistics by Ingredient Category\n");
     printf("3. Statistics by Supplier\n\n");
     printf("0. Return to Main Menu\n");
@@ -271,4 +277,71 @@ void CController::searchIngredient() {
         _getch();
         return;
     }
+}
+
+
+// 7. 유통기한 임박 및 만료제품 확인
+void CController::checkIngredientExpiry() {
+    CListFinder finder(m_list);
+    CListPrinter printer(m_list);
+
+    int days;
+    printf("유통기한 임박 기준 일수 입력 (예: 7): ");
+    scanf_s("%d", &days);
+
+    std::vector<CMyNode*> expiringSoon;
+    std::vector<CMyNode*> expired;
+
+    finder.findExprStatus(days, expiringSoon, expired);
+
+    system("cls");
+    printf("===============================================\n");
+    printf("         [Ingredient Expiry Status]\n");
+    printf("===============================================\n\n");
+
+    if (expired.empty() && expiringSoon.empty()) {
+        printf(" 모든 재료가 안전 유통기한 내에 있습니다!\n");
+        _getch();
+        return;
+    }
+
+    // 1.만료된 제품 표시
+    if (!expired.empty()) {
+        printf(" [유통기한 지난 재료 목록]\n");
+        printf("-----------------------------------------------\n");
+        printer.printSimpleList(expired);
+        printf("\n");
+    }
+
+    // 2. 임박 제품 표시
+    if (!expiringSoon.empty()) {
+        printf(" [유통기한 %d일 이내 임박 재료 목록]\n", days);
+        printf("-----------------------------------------------\n");
+        printer.printSimpleList(expiringSoon);
+        printf("\n");
+    }
+
+    printf("===============================================\n");
+    printf("[1] 전체 결과 저장 후 나가기\n");
+    printf("[2] 그냥 나가기\n");
+    printf("-----------------------------------------------\n");
+    printf("선택: ");
+
+    int choice = 0;
+    scanf_s("%d", &choice);
+
+    if (choice == 1) {
+        // 두 목록을 합쳐서 한 번에 저장
+        std::vector<CMyNode*> combined;
+        combined.reserve(expired.size() + expiringSoon.size());
+        combined.insert(combined.end(), expired.begin(), expired.end());
+        combined.insert(combined.end(), expiringSoon.begin(), expiringSoon.end());
+
+        printer.saveToFile(combined, "ingredients_log.txt");
+
+        printf("\n결과가 ingredients_log.txt 파일에 추가되었습니다.\n");
+    }
+
+    printf("\n메뉴로 돌아가려면 아무 키나 누르세요...\n");
+    _getch();
 }

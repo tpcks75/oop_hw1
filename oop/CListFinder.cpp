@@ -4,6 +4,7 @@
 #include "MyList.h"
 #include <cstring>
 #include <vector>
+#include <ctime>
 
 CListFinder::CListFinder(CMyList& list)
     : m_list(list)
@@ -98,4 +99,57 @@ std::vector<CMyNode*> CListFinder::findByPartialName(const char* pszSubName) {
     }
 
     return results; // vector<CUserData*> 반환
+}
+
+// 유통기한 임박 및 만료 제품 확인
+void CListFinder::findExprStatus(
+    int days,
+    std::vector<CMyNode*>& expiringSoon,
+    std::vector<CMyNode*>& expired)
+{
+    // 오늘 날짜 (연, 월, 일만)
+    time_t now = time(nullptr);
+    struct tm today {};
+    localtime_s(&today, &now);
+    today.tm_hour = 0;
+    today.tm_min = 0;
+    today.tm_sec = 0;
+    time_t todayMidnight = mktime(&today);
+
+    for (CMyNode* p = m_list.getHead()->getNext();
+        p != nullptr; p = p->getNext())
+    {
+        CUserData* data = static_cast<CUserData*>(p);
+        const char* expr = data->getExpr();
+
+        // YYYYMMDD 형식 검사
+        if (strlen(expr) != 8)
+            continue;
+
+        int y, m, d;
+        if (sscanf_s(expr, "%4d%2d%2d", &y, &m, &d) != 3)
+            continue;
+
+        struct tm expiry {};
+        expiry.tm_year = y - 1900;
+        expiry.tm_mon = m - 1;
+        expiry.tm_mday = d;
+        expiry.tm_hour = 0;
+        expiry.tm_min = 0;
+        expiry.tm_sec = 0;
+
+        time_t expiryTime = mktime(&expiry);
+
+        // 날짜 차이 계산 (일 단위)
+        double diffDays = difftime(expiryTime, todayMidnight) / (60 * 60 * 24);
+
+        if (diffDays < 0) {
+            // 유통기한 지난 제품
+            expired.push_back(p);
+        }
+        else if (diffDays <= days) {
+            // 유통기한 임박 제품
+            expiringSoon.push_back(p);
+        }
+    }
 }

@@ -21,7 +21,7 @@ public:
 	const char* getName(void) const { return strName; }
 	const char* getIdt(void) const { return strIdt; }
 	const char* getCategorytmp(void) const { return strCategory; }
-	const char* getDepartment(void) const { return strExpr; }
+	const char* getExpr(void) const { return strExpr; }
 	const char* getSupplier(void) const { return strSupplier; }
 	const char* getCount(void) const { return strCount; }
 	const char* getPrice(void) const { return strPrice; }

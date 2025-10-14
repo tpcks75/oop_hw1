@@ -46,7 +46,7 @@ void CListPrinter::printAll()
             (const char*)pNode->getName(),
             (const char*)pNode->getIdt(),
             (const char*)pNode->getCategorytmp(),
-            (const char*)pNode->getDepartment(),    // Expr (유통기한)
+            (const char*)pNode->getExpr(),    // Expr (유통기한)
             (const char*)pNode->getSupplier(),
             (const char*)pNode->getCount(),
             (const char*)pNode->getPrice()
@@ -72,7 +72,7 @@ void CListPrinter::printAll()
 
 
 // ===============================================================
-// 검색 결과 출력(다중결과용)
+// 검색 결과 출력 및 저장(다중결과용)
 void CListPrinter::printNodes(const std::vector<CMyNode*>& nodes)
 {
     if (nodes.empty()) {
@@ -89,7 +89,7 @@ void CListPrinter::printNodes(const std::vector<CMyNode*>& nodes)
             (const char*)u->getName(),
             (const char*)u->getIdt(),
             (const char*)u->getCategorytmp(),
-            (const char*)u->getDepartment(),
+            (const char*)u->getExpr(),
             (const char*)u->getSupplier(),
             (const char*)u->getCount(),
             (const char*)u->getPrice()
@@ -107,8 +107,34 @@ void CListPrinter::printNodes(const std::vector<CMyNode*>& nodes)
 
     printf("\nReturning to main menu...\n");
     _getch();
+    
 }
 
+// 검색 결과 출력 (다중결과용)
+void CListPrinter::printSimpleList(const std::vector<CMyNode*>& nodes)
+{
+    if (nodes.empty()) {
+        printf("해당 목록이 비어 있습니다.\n");
+        return;
+    }
+
+    PRINT_HEADER("Expiry Check Results");
+
+    for (CMyNode* node : nodes) {
+        CUserData* u = static_cast<CUserData*>(node);
+        printf("%-15s %-20s %-15s %-15s %-15s %-10s %-10s\n",
+            (const char*)u->getName(),
+            (const char*)u->getIdt(),
+            (const char*)u->getCategorytmp(),
+            (const char*)u->getExpr(),
+            (const char*)u->getSupplier(),
+            (const char*)u->getCount(),
+            (const char*)u->getPrice()
+        );
+    }
+
+    PRINT_FOOTER();
+}
 
 /////////////////////////////// 통계 //////////////////////////////
 // 재료 이름별 통계
@@ -217,7 +243,7 @@ void CListPrinter::saveToFile(const std::vector<CMyNode*>& nodes, const char* fi
             (const char*)u->getName(),
             (const char*)u->getIdt(),
             (const char*)u->getCategorytmp(),
-            (const char*)u->getDepartment(),
+            (const char*)u->getExpr(),
             (const char*)u->getSupplier(),
             (const char*)u->getCount(),
             (const char*)u->getPrice()

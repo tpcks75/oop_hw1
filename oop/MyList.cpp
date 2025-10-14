@@ -235,7 +235,7 @@ void CMyList::sortBy(SortType type) {
 		case SortType::Category:
 			return strcmp(ua->getCategorytmp(), ub->getCategorytmp()) < 0;
 		case SortType::Expr:
-			return _stricmp(ua->getDepartment(), ub->getDepartment()) < 0;
+			return _stricmp(ua->getExpr(), ub->getExpr()) < 0;
 		}
 		return false;
 		});
@@ -321,7 +321,7 @@ CMyNode* CMyList::findByExpr(const char* pszExpr)
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
 		CUserData* pUser = static_cast<CUserData*>(pTmp);
-		if (strcmp(pUser->getDepartment(), pszExpr) == 0)
+		if (strcmp(pUser->Expr(), pszExpr) == 0)
 			return pTmp;
 	}
 	return nullptr;

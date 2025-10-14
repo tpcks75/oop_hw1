@@ -22,6 +22,7 @@ public:
     void sortIngredients();
 
     void showStatistics();
+    void checkIngredientExpiry();
 
     /*
    1. Search by name

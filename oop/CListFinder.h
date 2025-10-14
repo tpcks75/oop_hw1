@@ -25,4 +25,14 @@ public:
 
     //부분 문자열 탐색 함수
     std::vector<CMyNode*> findByPartialName(const char* pszSubName);
+
+ 
+    // 유통기한 임박 및 만료 재료 검색
+    void findExprStatus(int days,
+        std::vector<CMyNode*>& expiringSoon,
+        std::vector<CMyNode*>& expired);
+
+
+
+
 };

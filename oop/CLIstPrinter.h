@@ -16,8 +16,11 @@ public:
     // 전체 출력
     void printAll();
 
-    // 특정 검색 결과(벡터)에 대한 출력
+    // 특정 검색 결과(벡터)에 대한 출력(단일출력 후 저장)
     void printNodes(const std::vector<CMyNode*>& nodes);
+
+    // 특정 검색 결과(벡터)에 대한 출력(단일출력)
+    void printSimpleList(const std::vector<CMyNode*>& nodes);
 
     // 통계 출력
     void printStatisticsByName(CMyList& list);
