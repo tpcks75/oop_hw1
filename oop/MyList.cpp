@@ -1,5 +1,5 @@
 #include "MyList.h"
-#include "UserData.h"
+#include "IngredientData.h"
 #include "CListFinder.h"
 #include "CLIstPrinter.h"
 #include "SortType.h"
@@ -12,7 +12,7 @@
 
 CMyList::CMyList()
 {
-	m_pHead = new CUserData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000", "0000", "0000");
+	m_pHead = new CIngredientData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000", "0000", "0000");
 }
 
 CMyList::~CMyList(void)
@@ -54,8 +54,8 @@ void CMyList::printAll(void)
 		pTmp = pTmp->pNext;
 	}
 
-	printf("CUserData Counter : %d\n",
-		CUserData::GetUserDataCounter() - 1);
+	printf("CIngredientData Counter : %d\n",
+		CIngredientData::GetIngredientDataCounter() - 1);
 
 	_getch();
 }
@@ -126,8 +126,8 @@ void CMyList::sortByID()
 		{
 			CMyNode* next = curr->pNext;
 
-			const char* a = static_cast<CUserData*>(curr)->getKey();
-			const char* b = static_cast<CUserData*>(next)->getKey();
+			const char* a = static_cast<CIngredientData*>(curr)->getKey();
+			const char* b = static_cast<CIngredientData*>(next)->getKey();
 
 			if (std::strcmp(a, b) > 0)
 			{
@@ -152,10 +152,10 @@ void CMyList::sortByID()
 	// (CMyList의 열거자/이터레이터를 이용해 순회 출력)
 	// makeIterator는 CMyList 멤버라 내부에서 바로 사용 가능 :contentReference[oaicite:1]{index=1}
 	CMyIterator it = makeIterator();
-	CUserData* pNode = nullptr;
+	CIngredientData* pNode = nullptr;
 
 	printf("\n==== 이름 오름차순 정렬 결과 ===============\n");
-	while ((pNode = static_cast<CUserData*>(it.GetCurrent())) != nullptr) {
+	while ((pNode = static_cast<CIngredientData*>(it.GetCurrent())) != nullptr) {
 		pNode->printNode();   // 각 노드의 출력 루틴 사용 :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}
 		it.MoveNext();
 	}
@@ -224,8 +224,8 @@ void CMyList::sortBy(SortType type) {
 
 	std::sort(nodes.begin(), nodes.end(), [type](CMyNode* a, CMyNode* b) {
 		// 데이터필드 접근을 위한 다운캐스팅
-		CUserData* ua = static_cast<CUserData*>(a);
-		CUserData* ub = static_cast<CUserData*>(b);
+		CIngredientData* ua = static_cast<CIngredientData*>(a);
+		CIngredientData* ub = static_cast<CIngredientData*>(b);
 
 		switch (type) {
 		case SortType::NAME:
@@ -274,7 +274,7 @@ CMyNode* CMyList::findByName(const char* pszName)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
-		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
 		if (strcmp(pUser->getName(), pszName) == 0)
 			return pTmp;
 	}
@@ -285,7 +285,7 @@ CMyNode* CMyList::findByIdt(const char* pszID)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
-		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
 		if (strcmp(pUser->getIdt(), pszID) == 0)
 			return pTmp;
 	}
@@ -297,7 +297,7 @@ CMyNode* CMyList::findByAdmissionYear(const char* pszYear)
 	// 학번 앞 4자리를 입학년도라고 가정 (예: 2023xxxxxx)
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
-		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
 		const char* id = pUser->getIdt();
 		if (strncmp(id, pszYear, 4) == 0)
 			return pTmp;
@@ -309,7 +309,7 @@ CMyNode* CMyList::findByCategory(const char* pszCategory)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
-		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
 		if (strcmp(pUser->getCategorytmp(), pszCategory) == 0)
 			return pTmp;
 	}
@@ -320,7 +320,7 @@ CMyNode* CMyList::findByExpr(const char* pszExpr)
 {
 	for (CMyNode* pTmp = m_pHead->pNext; pTmp != nullptr; pTmp = pTmp->pNext)
 	{
-		CUserData* pUser = static_cast<CUserData*>(pTmp);
+		CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
 		if (strcmp(pUser->Expr(), pszExpr) == 0)
 			return pTmp;
 	}
@@ -342,9 +342,9 @@ void CMyList::printAll()
 	printf("---------------------------------------------------------------\n");
 
 	CMyIterator it = makeIterator();
-	CUserData* pNode = nullptr;
+	CIngredientData* pNode = nullptr;
 
-	while ((pNode = static_cast<CUserData*>(it.GetCurrent())) != nullptr) {
+	while ((pNode = static_cast<CIngredientData*>(it.GetCurrent())) != nullptr) {
 		pNode->printNode();
 		it.MoveNext();
 	}

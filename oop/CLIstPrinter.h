@@ -1,6 +1,6 @@
 #pragma once
 #include "MyList.h"
-#include "UserData.h"
+#include "IngredientData.h"
 // 다중처리를 위한 STL
 #include <vector>
 

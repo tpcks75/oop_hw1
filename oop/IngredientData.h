@@ -3,19 +3,19 @@
 #include "MyString.h"
 
 // CMyNode 클래스의 파생 클래스로 변경
-class CUserData : public CMyNode
+class CIngredientData : public CMyNode
 {
 	//생성자
 public:
-	CUserData(void);
-	CUserData(const char* pszName,
+	CIngredientData(void);
+	CIngredientData(const char* pszName,
 		const char* pszIdt,
 		const char* pszCategory,
 		const char* pszExpr,
 		const char* pszSupplier,
 		const char* nCount,
 		const char* price);
-	~CUserData(void);
+	~CIngredientData(void);
 
 	//getter
 	const char* getName(void) const { return strName; }
@@ -29,7 +29,7 @@ public:
 	// 학번 앞4자리(입학년도) 문자열 반환
 	const char* getAdmissionYear(void);
 
-	static int getUserDataCounter(void) { return nUserDataCounter; }
+	static int getIngredientDataCounter(void) { return nIngredientDataCounter; }
 
 	//객체 생성
 protected:
@@ -46,7 +46,7 @@ protected:
 	// 같은 식별자일 시 Error : Already inserted 출력
 
 
-	static int nUserDataCounter;
+	static int nIngredientDataCounter;
 
 public:
 	// 순수 가상 함수들 정의

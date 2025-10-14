@@ -1,6 +1,6 @@
 ﻿#include "CController.h"
 #include "MyListEx.h"
-#include "UserData.h"
+#include "IngredientData.h"
 
 int main() {
 	CController ctrl;
@@ -9,12 +9,12 @@ int main() {
 }
 /*#include "UserInterface.h"
 #include "MyListEx.h"
-#include "UserData.h"
+#include "IngredientData.h"
 
 // CController로 더미헤더선언 이전 기존 더미헤더세팅은 list로 이관
 int main()
 {
-	CMyListEx DB(new CUserData("Dummy", "Head"));
+	CMyListEx DB(new CIngredientData("Dummy", "Head"));
 	CUserInterface UI(DB);
 	UI.run();
 }*/

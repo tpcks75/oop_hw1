@@ -137,7 +137,7 @@
     <ClCompile Include="MyListEx.cpp" />
     <ClCompile Include="MyNode.cpp" />
     <ClCompile Include="MyString.cpp" />
-    <ClCompile Include="UserData.cpp" />
+    <ClCompile Include="IngredientDta.cpp" />
     <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +150,7 @@
     <ClInclude Include="MyNode.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="SortType.h" />
-    <ClInclude Include="UserData.h" />
+    <ClInclude Include="IngredientData.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="헤더.h" />
   </ItemGroup>

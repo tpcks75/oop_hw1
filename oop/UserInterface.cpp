@@ -1,5 +1,5 @@
 #include "UserInterface.h"
-#include "UserData.h"
+#include "IngredientData.h"
 #include "MyIterator.h"
 
 
@@ -251,8 +251,8 @@ void CUserInterface::printMessage(const char* msg) {
 }
 
 void CUserInterface::displayUserList(CMyIterator& it) {
-    CUserData* pNode = nullptr;
-    while ((pNode = static_cast<CUserData*>(it.GetCurrent())) != nullptr) {
+    CIngredientData* pNode = nullptr;
+    while ((pNode = static_cast<CIngredientData*>(it.GetCurrent())) != nullptr) {
         pNode->printNode();
         it.MoveNext();
     }

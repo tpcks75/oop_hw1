@@ -1,16 +1,16 @@
-#include "UserData.h"
+#include "IngredientData.h"
 #include <cstdio>
 #include <cstring>
 
 
 
-int CUserData::nUserDataCounter = 0;
+int CIngredientData::nIngredientDataCounter = 0;
 
-CUserData::CUserData(void)
+CIngredientData::CIngredientData(void)
 {
-	nUserDataCounter++;
+	nIngredientDataCounter++;
 }
-CUserData::CUserData(const char* pszName,
+CIngredientData::CIngredientData(const char* pszName,
 	const char* pszIdt,
 	const char* pszCategory,
 	const char* pszExpr,
@@ -26,20 +26,20 @@ CUserData::CUserData(const char* pszName,
 	strPrice(nPrice)
 
 {
-	nUserDataCounter++;
+	nIngredientDataCounter++;
 }
 
-CUserData::~CUserData(void)
+CIngredientData::~CIngredientData(void)
 {
-	nUserDataCounter--;
+	nIngredientDataCounter--;
 }
 
-const char* CUserData::getKey(void)
+const char* CIngredientData::getKey(void)
 {
 	return this->strIdt;
 }
 
-void CUserData::printNode(void)
+void CIngredientData::printNode(void)
 {
 #ifdef _DEBUG
 	printf(" %-15s %-10s %-10s %-20s %-12s %5d개 %8d원 \n",
@@ -62,7 +62,7 @@ void CUserData::printNode(void)
 #endif
 }
 
-const char* CUserData::getAdmissionYear(void)
+const char* CIngredientData::getAdmissionYear(void)
 {
 	static char szYear[5] = { 0 };  // 4자리 + null
 	const char* id = strIdt.getString();

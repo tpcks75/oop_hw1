@@ -1,7 +1,7 @@
 #include "CController.h"
 #include "UserInterface.h"
 #include "MyList.h"
-#include "UserData.h"
+#include "IngredientData.h"
 #include "MyIterator.h"
 #include "CListFinder.h"
 #include "CListPrinter.h"
@@ -17,16 +17,16 @@ CController::CController(void)
     // 더미 데이터 세팅
 
 
-    m_list.addNewNode(new CUserData("Tomato", "Tomato_1005", "Vegetable", "20251005", "LocalFarm", "120", "2500"));
-    m_list.addNewNode(new CUserData("Milk", "Milk_1010", "Dairy", "20251010", "DailyDairy", "60", "1900"));
-    m_list.addNewNode(new CUserData("Tomato", "Tomato_1018", "Vegetable", "20251018", "LocalFarm", "150", "2600"));
-    m_list.addNewNode(new CUserData("Cheese", "Cheese_1020", "Dairy", "20251020", "DailyDairy", "75", "4100"));
-    m_list.addNewNode(new CUserData("Apple", "Apple_1022", "Fruit", "20251022", "FruitKing", "130", "2300"));
-    m_list.addNewNode(new CUserData("Beef", "Beef_1025", "Meat", "20251025", "MeatHouse", "40", "12800"));
-    m_list.addNewNode(new CUserData("SoySauce", "Soy_1030", "Seasoning", "20251030", "KFoodMart", "55", "5800"));
-    m_list.addNewNode(new CUserData("Salt", "Salt_1102", "Seasoning", "20251102", "KFoodMart", "300", "500"));
-    m_list.addNewNode(new CUserData("Cabbage", "Cabbage_1110", "Vegetable", "20251110", "LocalFarm", "90", "2100"));
-    m_list.addNewNode(new CUserData("Chicken", "Chicken_1115", "Meat", "20251115", "PoultryPlus", "80", "7500"));
+    m_list.addNewNode(new CIngredientData("Tomato", "Tomato_1005", "Vegetable", "20251005", "LocalFarm", "120", "2500"));
+    m_list.addNewNode(new CIngredientData("Milk", "Milk_1010", "Dairy", "20251010", "DailyDairy", "60", "1900"));
+    m_list.addNewNode(new CIngredientData("Tomato", "Tomato_1018", "Vegetable", "20251018", "LocalFarm", "150", "2600"));
+    m_list.addNewNode(new CIngredientData("Cheese", "Cheese_1020", "Dairy", "20251020", "DailyDairy", "75", "4100"));
+    m_list.addNewNode(new CIngredientData("Apple", "Apple_1022", "Fruit", "20251022", "FruitKing", "130", "2300"));
+    m_list.addNewNode(new CIngredientData("Beef", "Beef_1025", "Meat", "20251025", "MeatHouse", "40", "12800"));
+    m_list.addNewNode(new CIngredientData("SoySauce", "Soy_1030", "Seasoning", "20251030", "KFoodMart", "55", "5800"));
+    m_list.addNewNode(new CIngredientData("Salt", "Salt_1102", "Seasoning", "20251102", "KFoodMart", "300", "500"));
+    m_list.addNewNode(new CIngredientData("Cabbage", "Cabbage_1110", "Vegetable", "20251110", "LocalFarm", "90", "2100"));
+    m_list.addNewNode(new CIngredientData("Chicken", "Chicken_1115", "Meat", "20251115", "PoultryPlus", "80", "7500"));
 
 	m_ui = new CUserInterface(*this);
 }
@@ -62,7 +62,7 @@ void CController::addIngredient() {
     m_ui->inputPrice(Price);
 
 
-    int nResult = m_list.addNewNode(new CUserData(name, id, Category, Expr, Supplier, Count, Price));
+    int nResult = m_list.addNewNode(new CIngredientData(name, id, Category, Expr, Supplier, Count, Price));
     if (nResult == 0)
     {
         puts("ERROR: 이미 존재하는 재료입니다.");
@@ -99,7 +99,7 @@ void CController::showAllIngredients() {
 	printer.printAll();   //  CMyList::printAll() → CListPrinter로 이관
     
 	/*CMyIterator iter = m_list.makeIterator();
-    CUserData* pNode = nullptr;
+    CIngredientData* pNode = nullptr;
 
     // model에서 데이터를가져와 UI에 출력요청
     m_ui->displayUserList(iter);
@@ -223,7 +223,7 @@ void CController::searchIngredient()
                 printf("\n[부분 이름 검색 결과]\n");
                 printf("----------------------------------------------\n");
                 for (auto pNode : results) {
-                    CUserData* user = static_cast<CUserData*>(pNode);
+                    CIngredientData* user = static_cast<CIngredientData*>(pNode);
                     user->printNode();
                 }
                 printf("----------------------------------------------\n");

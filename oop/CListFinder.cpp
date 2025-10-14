@@ -1,5 +1,5 @@
 #include "CListFinder.h"
-#include "UserData.h"
+#include "IngredientData.h"
 #include "MyNode.h"
 #include "MyList.h"
 #include <cstring>
@@ -20,7 +20,7 @@ std::vector<CMyNode*> CListFinder::findByName(const char* pszName)
     for (CMyNode* pTmp = m_list.getHead()->getNext();
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
-        CUserData* pUser = static_cast<CUserData*>(pTmp);
+        CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
         if (_stricmp(pUser->getName(), pszName) == 0)
         {
             results.push_back(pTmp); //  일치 시 vector에 저장
@@ -38,7 +38,7 @@ std::vector<CMyNode*> CListFinder::findByIdt(const char* pszID)
     for (CMyNode* pTmp = m_list.getHead()->getNext();
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
-        CUserData* pUser = static_cast<CUserData*>(pTmp);
+        CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
         if (strcmp(pUser->getIdt(), pszID) == 0)
         {
             results.push_back(pTmp);
@@ -57,7 +57,7 @@ std::vector<CMyNode*> CListFinder::findByCategory(const char* pszCategory)
     for (CMyNode* pTmp = m_list.getHead()->getNext();
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
-        CUserData* pUser = static_cast<CUserData*>(pTmp);
+        CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
         if (_stricmp(pUser->getCategorytmp(), pszCategory) == 0)
         {
             results.push_back(pTmp);
@@ -74,7 +74,7 @@ std::vector<CMyNode*> CListFinder::findBySupplier(const char* pszExpr)
     for (CMyNode* pTmp = m_list.getHead()->getNext();
         pTmp != nullptr; pTmp = pTmp->getNext())
     {
-        CUserData* pUser = static_cast<CUserData*>(pTmp);
+        CIngredientData* pUser = static_cast<CIngredientData*>(pTmp);
         if (_stricmp(pUser->getSupplier(), pszExpr) == 0)
         {
             results.push_back(pTmp);
@@ -89,7 +89,7 @@ std::vector<CMyNode*> CListFinder::findByPartialName(const char* pszSubName) {
     std::vector<CMyNode*> results; //  결과 저장용 벡터
 
     for (CMyNode* p = m_list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
-        CUserData* user = static_cast<CUserData*>(p);
+        CIngredientData* user = static_cast<CIngredientData*>(p);
 
         //  MyString 변환 후 부분 문자열 검색
         CMyString tempName(user->getName()); // const char* → CMyString
@@ -98,7 +98,7 @@ std::vector<CMyNode*> CListFinder::findByPartialName(const char* pszSubName) {
         }
     }
 
-    return results; // vector<CUserData*> 반환
+    return results; // vector<CIngredientData*> 반환
 }
 
 // 유통기한 임박 및 만료 제품 확인
@@ -119,7 +119,7 @@ void CListFinder::findExprStatus(
     for (CMyNode* p = m_list.getHead()->getNext();
         p != nullptr; p = p->getNext())
     {
-        CUserData* data = static_cast<CUserData*>(p);
+        CIngredientData* data = static_cast<CIngredientData*>(p);
         const char* expr = data->getExpr();
 
         // YYYYMMDD 형식 검사

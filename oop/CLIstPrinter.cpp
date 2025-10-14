@@ -1,5 +1,5 @@
 #include "CListPrinter.h"
-#include "UserData.h"
+#include "IngredientData.h"
 #include "MyString.h"
 #include <cstdio>
 #include <cstring>
@@ -37,11 +37,11 @@ void CListPrinter::printAll()
     PRINT_HEADER("All Users");
 
     CMyIterator it = m_list.makeIterator();
-    CUserData* pNode = nullptr;
+    CIngredientData* pNode = nullptr;
     std::vector<CMyNode*> nodes;
     int count = 0;
 
-    while ((pNode = static_cast<CUserData*>(it.GetCurrent())) != nullptr) {
+    while ((pNode = static_cast<CIngredientData*>(it.GetCurrent())) != nullptr) {
         printf("%-15s %-20s %-15s %-15s %-15s %-10s % -10s\n",
             (const char*)pNode->getName(),
             (const char*)pNode->getIdt(),
@@ -84,7 +84,7 @@ void CListPrinter::printNodes(const std::vector<CMyNode*>& nodes)
     PRINT_HEADER("Search Results");
 
     for (CMyNode* node : nodes) {
-        CUserData* u = static_cast<CUserData*>(node);
+        CIngredientData* u = static_cast<CIngredientData*>(node);
         printf("%-15s %-20s %-15s %-15s %-15s %-10s %-10s\n",
             (const char*)u->getName(),
             (const char*)u->getIdt(),
@@ -121,7 +121,7 @@ void CListPrinter::printSimpleList(const std::vector<CMyNode*>& nodes)
     PRINT_HEADER("Expiry Check Results");
 
     for (CMyNode* node : nodes) {
-        CUserData* u = static_cast<CUserData*>(node);
+        CIngredientData* u = static_cast<CIngredientData*>(node);
         printf("%-15s %-20s %-15s %-15s %-15s %-10s %-10s\n",
             (const char*)u->getName(),
             (const char*)u->getIdt(),
@@ -143,7 +143,7 @@ void CListPrinter::printStatisticsByName(CMyList& list) {
     int total = 0;
 
     for (CMyNode* p = list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
-        CUserData* u = static_cast<CUserData*>(p);
+        CIngredientData* u = static_cast<CIngredientData*>(p);
 
         std::string name((const char*)u->getName());
         nameCount[name]++;
@@ -167,7 +167,7 @@ void CListPrinter::printStatisticsByCategory(CMyList& list) {
     int total = 0;
 
     for (CMyNode* p = list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
-        CUserData* u = static_cast<CUserData*>(p);
+        CIngredientData* u = static_cast<CIngredientData*>(p);
 
         std::string category((const char*)u->getCategorytmp());
         categoryCount[category]++;
@@ -191,7 +191,7 @@ void CListPrinter::printStatisticsBySupplier(CMyList& list) {
     int total = 0;
 
     for (CMyNode* p = list.getHead()->getNext(); p != nullptr; p = p->getNext()) {
-        CUserData* u = static_cast<CUserData*>(p);
+        CIngredientData* u = static_cast<CIngredientData*>(p);
 
         std::string supplier((const char*)u->getSupplier());
         supplierCount[supplier]++;
@@ -238,7 +238,7 @@ void CListPrinter::saveToFile(const std::vector<CMyNode*>& nodes, const char* fi
     fprintf(fp, "---------------------------------------------------------------------------------------------------\n");
 
     for (CMyNode* node : nodes) {
-        CUserData* u = static_cast<CUserData*>(node);
+        CIngredientData* u = static_cast<CIngredientData*>(node);
         fprintf(fp, "%-15s %-20s %-15s %-15s %-15s %-10s %-10s\n",
             (const char*)u->getName(),
             (const char*)u->getIdt(),
