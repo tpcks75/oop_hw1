@@ -22,7 +22,7 @@ int CUserInterface::printMenu() {
 \n[4] Display All Ingredients\
 \n[5] Sort Ingredients\
 \n[6] View Statistics\
-\n[7] 유통기한 임박제품 확인\
+\n[7] Check products nearing expiration date\
 \n[0] Exit\n>");
     scanf_s("%d", &sel);
     return sel;
