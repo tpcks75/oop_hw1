@@ -17,16 +17,17 @@ CController::CController(void)
     // 더미 데이터 세팅
 
 
-    m_list.addNewNode(new CIngredientData("Tomato", "Tomato_1005", "Vegetable", "20251005", "LocalFarm", "120", "2500"));
-    m_list.addNewNode(new CIngredientData("Milk", "Milk_1010", "Dairy", "20251010", "DailyDairy", "60", "1900"));
-    m_list.addNewNode(new CIngredientData("Tomato", "Tomato_1018", "Vegetable", "20251018", "LocalFarm", "150", "2600"));
-    m_list.addNewNode(new CIngredientData("Cheese", "Cheese_1020", "Dairy", "20251020", "DailyDairy", "75", "4100"));
-    m_list.addNewNode(new CIngredientData("Apple", "Apple_1022", "Fruit", "20251022", "FruitKing", "130", "2300"));
-    m_list.addNewNode(new CIngredientData("Beef", "Beef_1025", "Meat", "20251025", "MeatHouse", "40", "12800"));
-    m_list.addNewNode(new CIngredientData("SoySauce", "Soy_1030", "Seasoning", "20251030", "KFoodMart", "55", "5800"));
-    m_list.addNewNode(new CIngredientData("Salt", "Salt_1102", "Seasoning", "20251102", "KFoodMart", "300", "500"));
-    m_list.addNewNode(new CIngredientData("Cabbage", "Cabbage_1110", "Vegetable", "20251110", "LocalFarm", "90", "2100"));
-    m_list.addNewNode(new CIngredientData("Chicken", "Chicken_1115", "Meat", "20251115", "PoultryPlus", "80", "7500"));
+    m_list.addNewNode(new CIngredientData("Tomato", "Tomato_Oct05", "Vegetable", "20251005", "LocalFarm", "120", "2500"));
+    m_list.addNewNode(new CIngredientData("Milk", "Milk_Oct10", "Dairy", "20251010", "DailyDairy", "60", "1900"));
+    m_list.addNewNode(new CIngredientData("Tomato", "Tomato_Oct18", "Vegetable", "20251018", "LocalFarm", "150", "2600"));
+    m_list.addNewNode(new CIngredientData("Cheese", "Cheese_Oct20", "Dairy", "20251020", "DailyDairy", "75", "4100"));
+    m_list.addNewNode(new CIngredientData("Apple", "Apple_Oct22", "Fruit", "20251022", "FruitKing", "130", "2300"));
+    m_list.addNewNode(new CIngredientData("Beef", "Beef_Oct25", "Meat", "20251025", "MeatHouse", "40", "12800"));
+    m_list.addNewNode(new CIngredientData("SoySauce", "Soy_Oct30", "Seasoning", "20251030", "KFoodMart", "55", "5800"));
+    m_list.addNewNode(new CIngredientData("Salt", "Salt_Nov02", "Seasoning", "20251102", "KFoodMart", "300", "500"));
+    m_list.addNewNode(new CIngredientData("Cabbage", "Cabbage_Nov10", "Vegetable", "20251110", "LocalFarm", "90", "2100"));
+    m_list.addNewNode(new CIngredientData("Chicken", "Chicken_Nov15", "Meat", "20251115", "PoultryPlus", "80", "7500"));
+
 
 	m_ui = new CUserInterface(*this);
 }
@@ -170,10 +171,8 @@ void CController::searchIngredient()
     printf("2. Search by Ingredient ID\n");
     printf("3. Search by Category\n");
     printf("4. Search by Supplier\n");
-    printf("5. Partial Search by Ingredient Name\n\n");
+    printf("5. Partial Search by Ingredient Name\n");
     printf("6. Show All Ingredients\n");
-    printf("7. 유통기한임박 재료표기\n");
-    printf("8.소진예정 재료 확인\n");
     printf("> ");
 
     scanf_s("%d", &choice);
@@ -229,6 +228,18 @@ void CController::searchIngredient()
                 printf("----------------------------------------------\n");
                 printf("총 %d개 발견됨.\n", (int)results.size());
             }
+
+            printf("\n[1] Save and Return\n[2] Return without Saving\nSelect: ");
+            int choice = 0;
+            scanf_s("%d", &choice);
+
+            if (choice == 1) {
+                printer.saveToFile(results, "ingredients_log.txt");
+                printf("\n결과가 ingredients_log.txt 파일에 저장되었습니다.\n");
+            }
+
+            printf("\n메뉴로 돌아가려면 아무 키나 누르세요...\n");
+
             _getch();
         }
         break;

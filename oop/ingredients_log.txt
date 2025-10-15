@@ -1,6 +1,6 @@
 
 
-============== [Record Time: 2025-10-14 13:15:51] ==============
+============== [Record Time: 2025-10-16 00:11:09] ==============
 Name            Idt                  Category        Expr            Supplier        Count      Price     
 ---------------------------------------------------------------------------------------------------
 Chicken         Chicken_1115         Meat            20251115        PoultryPlus     80         7500      
@@ -15,14 +15,7 @@ Milk            Milk_1010            Dairy           20251010        DailyDairy 
 Tomato          Tomato_1005          Vegetable       20251005        LocalFarm       120        2500      
 
 
-============== [Record Time: 2025-10-14 13:15:57] ==============
-Name            Idt                  Category        Expr            Supplier        Count      Price     
----------------------------------------------------------------------------------------------------
-Tomato          Tomato_1018          Vegetable       20251018        LocalFarm       150        2600      
-Tomato          Tomato_1005          Vegetable       20251005        LocalFarm       120        2500      
-
-
-============== [Record Time: 2025-10-14 13:16:30] ==============
+============== [Record Time: 2025-10-16 00:16:44] ==============
 Name            Idt                  Category        Expr            Supplier        Count      Price     
 ---------------------------------------------------------------------------------------------------
 Chicken         Chicken_1115         Meat            20251115        PoultryPlus     80         7500      
@@ -37,18 +30,63 @@ Milk            Milk_1010            Dairy           20251010        DailyDairy 
 Tomato          Tomato_1005          Vegetable       20251005        LocalFarm       120        2500      
 
 
-============== [Record Time: 2025-10-14 13:16:34] ==============
+============== [Record Time: 2025-10-16 00:17:27] ==============
 Name            Idt                  Category        Expr            Supplier        Count      Price     
 ---------------------------------------------------------------------------------------------------
+Tomato          Tomato_Oct12         Vegetable       20251016        sdlkfnlkasf     25         1500      
 Tomato          Tomato_1018          Vegetable       20251018        LocalFarm       150        2600      
 Tomato          Tomato_1005          Vegetable       20251005        LocalFarm       120        2500      
 
 
-============== [Record Time: 2025-10-14 13:16:42] ==============
+============== [Record Time: 2025-10-16 00:25:10] ==============
 Name            Idt                  Category        Expr            Supplier        Count      Price     
 ---------------------------------------------------------------------------------------------------
-Milk            Milk_1010            Dairy           20251010        DailyDairy      60         1900      
-Tomato          Tomato_1005          Vegetable       20251005        LocalFarm       120        2500      
-Apple           Apple_1022           Fruit           20251022        FruitKing       130        2300      
-Cheese          Cheese_1020          Dairy           20251020        DailyDairy      75         4100      
-Tomato          Tomato_1018          Vegetable       20251018        LocalFarm       150        2600      
+Chicken         Chicken_Nov15        Meat            20251115        PoultryPlus     80         7500      
+Cabbage         Cabbage_Nov10        Vegetable       20251110        LocalFarm       90         2100      
+Salt            Salt_Nov02           Seasoning       20251102        KFoodMart       300        500       
+SoySauce        Soy_Oct30            Seasoning       20251030        KFoodMart       55         5800      
+Beef            Beef_Oct25           Meat            20251025        MeatHouse       40         12800     
+Apple           Apple_Oct22          Fruit           20251022        FruitKing       130        2300      
+Cheese          Cheese_Oct20         Dairy           20251020        DailyDairy      75         4100      
+Tomato          Tomato_Oct18         Vegetable       20251018        LocalFarm       150        2600      
+Milk            Milk_Oct10           Dairy           20251010        DailyDairy      60         1900      
+Tomato          Tomato_Oct05         Vegetable       20251005        LocalFarm       120        2500      
+
+
+============== [Record Time: 2025-10-16 00:25:35] ==============
+Name            Idt                  Category        Expr            Supplier        Count      Price     
+---------------------------------------------------------------------------------------------------
+Tomato          Apple_Oct14          Vegetable       20251016        slalfl          15         5000      
+Chicken         Chicken_Nov15        Meat            20251115        PoultryPlus     80         7500      
+Cabbage         Cabbage_Nov10        Vegetable       20251110        LocalFarm       90         2100      
+Salt            Salt_Nov02           Seasoning       20251102        KFoodMart       300        500       
+SoySauce        Soy_Oct30            Seasoning       20251030        KFoodMart       55         5800      
+Beef            Beef_Oct25           Meat            20251025        MeatHouse       40         12800     
+Apple           Apple_Oct22          Fruit           20251022        FruitKing       130        2300      
+Cheese          Cheese_Oct20         Dairy           20251020        DailyDairy      75         4100      
+Tomato          Tomato_Oct18         Vegetable       20251018        LocalFarm       150        2600      
+Milk            Milk_Oct10           Dairy           20251010        DailyDairy      60         1900      
+Tomato          Tomato_Oct05         Vegetable       20251005        LocalFarm       120        2500      
+
+
+============== [Record Time: 2025-10-16 00:26:32] ==============
+Name            Idt                  Category        Expr            Supplier        Count      Price     
+---------------------------------------------------------------------------------------------------
+Apple           Apple_Oct22          Fruit           20251022        FruitKing       130        2300      
+Beef            Beef_Oct25           Meat            20251025        MeatHouse       40         12800     
+Cabbage         Cabbage_Nov10        Vegetable       20251110        LocalFarm       90         2100      
+Cheese          Cheese_Oct20         Dairy           20251020        DailyDairy      75         4100      
+Chicken         Chicken_Nov15        Meat            20251115        PoultryPlus     80         7500      
+Milk            Milk_Oct10           Dairy           20251010        DailyDairy      60         1900      
+Salt            Salt_Nov02           Seasoning       20251102        KFoodMart       300        500       
+SoySauce        Soy_Oct30            Seasoning       20251030        KFoodMart       55         5800      
+Tomato          Apple_Oct14          Vegetable       20251016        slalfl          15         5000      
+Tomato          Tomato_Oct18         Vegetable       20251018        LocalFarm       150        2600      
+Tomato          Tomato_Oct05         Vegetable       20251005        LocalFarm       120        2500      
+
+
+============== [Record Time: 2025-10-16 00:34:04] ==============
+Name            Idt                  Category        Expr            Supplier        Count      Price     
+---------------------------------------------------------------------------------------------------
+Tomato          Tomato_Oct18         Vegetable       20251018        LocalFarm       150        2600      
+Tomato          Tomato_Oct05         Vegetable       20251005        LocalFarm       120        2500      
