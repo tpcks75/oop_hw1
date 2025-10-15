@@ -9,7 +9,7 @@
 #include <ctime>
 
 #define PRINT_HEADER(title) \
-    printf("\n[Print - %s]\n", title); \
+    //printf("\n[Print - %s]\n", title); \
     printf("---------------------------------------------------------------------------------------------------\n"); \
     printf("%-15s %-20s %-15s %-15s %-15s %-10s %-10s""\n", \
            "Name", "Idt", "Category", "Expr", "Supplier", "Count", "Price"); \

@@ -295,10 +295,10 @@ void CController::checkIngredientExpiry() {
     finder.findExprStatus(days, expiringSoon, expired);
 
     system("cls");
-    printf("===============================================\n");
-    printf("         [Ingredient Expiry Status]\n");
-    printf("===============================================\n\n");
-
+    printf("==================================================================================================\n");
+    printf("                                     [Ingredient Expiry Status]\n");
+    printf("===================================================================================================\n\n");
+           //-------------------------------------------------------------------------------------------------- -
     if (expired.empty() && expiringSoon.empty()) {
         printf(" 모든 재료가 안전 유통기한 내에 있습니다!\n");
         _getch();
@@ -308,7 +308,7 @@ void CController::checkIngredientExpiry() {
     // 1.만료된 제품 표시
     if (!expired.empty()) {
         printf(" [유통기한 지난 재료 목록]\n");
-        printf("-----------------------------------------------\n");
+        printf("---------------------------------------------------------------------------------------------------\n");
         printer.printSimpleList(expired);
         printf("\n");
     }
@@ -316,7 +316,7 @@ void CController::checkIngredientExpiry() {
     // 2. 임박 제품 표시
     if (!expiringSoon.empty()) {
         printf(" [유통기한 %d일 이내 임박 재료 목록]\n", days);
-        printf("-----------------------------------------------\n");
+        printf("---------------------------------------------------------------------------------------------------\n");
         printer.printSimpleList(expiringSoon);
         printf("\n");
     }
