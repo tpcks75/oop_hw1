@@ -42,7 +42,7 @@ const char* CIngredientData::getKey(void)
 void CIngredientData::printNode(void)
 {
 #ifdef _DEBUG
-	printf(" %-15s %-10s %-10s %-20s %-12s %5d개 %8d원 \n",
+	printf(" %-15s %-10s %-10s %-20s %-12s %5s개 %8s원 \n",
 		(const char*)strName,
 		(const char*)strIdt,
 		(const char*)strCategory,

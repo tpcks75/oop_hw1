@@ -129,6 +129,8 @@ void CController::sortIngredients() {
 
     int sel;
     scanf_s("%d", &sel);
+    while (getchar() != '\n'); // flush
+
     switch (sel) {
     case 1: m_list.sortBy(SortType::NAME);
         break;
@@ -176,6 +178,7 @@ void CController::searchIngredient()
     printf("> ");
 
     scanf_s("%d", &choice);
+    while (getchar() != '\n'); // flush
 
     char key[64] = { 0 };
 
@@ -211,6 +214,7 @@ void CController::searchIngredient()
     case 5:
         printf("Enter partial name: ");
         scanf_s("%s", key, (unsigned)sizeof(key));  // 검색어 입력 받기
+        while (getchar() != '\n'); // flush
 
         {
             auto results = finder.findByPartialName(key);
@@ -232,6 +236,7 @@ void CController::searchIngredient()
             printf("\n[1] Save and Return\n[2] Return without Saving\nSelect: ");
             int choice = 0;
             scanf_s("%d", &choice);
+            while (getchar() != '\n'); // flush
 
             if (choice == 1) {
                 printer.saveToFile(results, "ingredients_log.txt");
@@ -270,6 +275,7 @@ void CController::showStatistics() {
 
     int sel;
     scanf_s("%d", &sel);
+    while (getchar() != '\n'); // flush
 
     CListPrinter stprint(m_list);
 
@@ -296,9 +302,14 @@ void CController::checkIngredientExpiry() {
     CListFinder finder(m_list);
     CListPrinter printer(m_list);
 
+    puts("[DBG] BEFORE FOOTER"); fflush(stdout);
+    // debgug
+
+
     int days;
     printf("유통기한 임박 기준 일수 입력 (예: 7): ");
     scanf_s("%d", &days);
+    while (getchar() != '\n'); // 엔터 제거
 
     std::vector<CMyNode*> expiringSoon;
     std::vector<CMyNode*> expired;
@@ -324,6 +335,10 @@ void CController::checkIngredientExpiry() {
         printf("\n");
     }
 
+    //debgug
+    puts("[DBG] AFTER FOOTER"); fflush(stdout);
+
+
     // 2. 임박 제품 표시
     if (!expiringSoon.empty()) {
         printf(" [유통기한 %d일 이내 임박 재료 목록]\n", days);
@@ -340,6 +355,7 @@ void CController::checkIngredientExpiry() {
 
     int choice = 0;
     scanf_s("%d", &choice);
+    while (getchar() != '\n'); // 엔터 제거
 
     if (choice == 1) {
         // 두 목록을 합쳐서 한 번에 저장

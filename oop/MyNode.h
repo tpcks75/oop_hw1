@@ -5,7 +5,8 @@ class CMyNode
 	friend class CMyList;
 	friend class CListFinder; 
 public:
-	CMyNode(void);
+	CMyNode();
+	explicit CMyNode(CMyNode* next);
 	virtual ~CMyNode(void);
 
 	// 관리에 필요한 인터페이스 함수들을 순수 가상 함수로 선언

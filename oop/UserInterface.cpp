@@ -25,6 +25,8 @@ int CUserInterface::printMenu() {
 \n[7] Check products nearing expiration date\
 \n[0] Exit\n>");
     scanf_s("%d", &sel);
+    while (getchar() != '\n'); // flush
+
     return sel;
 }
 ////////////////////////////////////////////////////////////////
@@ -60,6 +62,7 @@ void CUserInterface::inputIdt(char* idt) {
     while (true) {
         printf("Input Ingredient ID (e.g., Apple_Oct13): ");
         scanf_s("%s", idt, 32);
+        while (getchar() != '\n'); // flush
 
         size_t len = strlen(idt);
         bool valid = true;
@@ -90,6 +93,7 @@ void CUserInterface::inputCategory(char* category) {
     while (true) {
         printf("Input Category (e.g., Fruit, Dairy): ");
         scanf_s("%s", category, 32);
+        while (getchar() != '\n'); // flush
 
         size_t len = strlen(category);
         bool valid = true;
@@ -118,6 +122,7 @@ void CUserInterface::inputExpr(char* expr) {
     while (true) {
         printf("Input Expiration Date (YYYYMMDD): ");
         scanf_s("%s", expr, 32);
+        while (getchar() != '\n'); // flush
 
         size_t len = strlen(expr);
         bool allDigits = true;
@@ -143,6 +148,7 @@ void CUserInterface::inputSupplier(char* supplier) {
     while (true) {
         printf("Input Supplier Name (1~20 chars): ");
         scanf_s("%s", supplier, 32);
+        while (getchar() != '\n'); // flush
 
         size_t len = strlen(supplier);
         bool valid = true;
@@ -168,6 +174,7 @@ void CUserInterface::inputCount(char* countStr) {
     while (true) {
         printf("Input Count (integer กร 0): ");
         scanf_s("%s", countStr, 32);
+        while (getchar() != '\n'); // flush
 
         bool valid = true;
         for (size_t i = 0; i < strlen(countStr); ++i) {
@@ -194,6 +201,7 @@ void CUserInterface::inputPrice(char* priceStr) {
     while (true) {
         printf("Input Unit Price (integer กร 0): ");
         scanf_s("%s", priceStr, 32);
+        while (getchar() != '\n'); // flush
 
         bool valid = true;
         for (size_t i = 0; i < strlen(priceStr); ++i) {

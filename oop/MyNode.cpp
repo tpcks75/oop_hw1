@@ -1,3 +1,4 @@
+#pragma once
 #include "MyNode.h"
 
 CMyNode::CMyNode(void)

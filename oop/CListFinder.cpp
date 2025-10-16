@@ -129,7 +129,7 @@ void CListFinder::findExprStatus(
         int y, m, d;
         if (sscanf_s(expr, "%4d%2d%2d", &y, &m, &d) != 3)
             continue;
-
+        
         struct tm expiry {};
         expiry.tm_year = y - 1900;
         expiry.tm_mon = m - 1;

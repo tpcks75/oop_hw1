@@ -17,7 +17,7 @@
 
 #define PRINT_FOOTER() \
     printf("---------------------------------------------------------------------------------------------------\n"); \
-    //_getch();
+    fflush(stdout); // 출력 즉시 비우기
 
 CListPrinter::CListPrinter(CMyList& list)
     : m_list(list)
@@ -62,6 +62,7 @@ void CListPrinter::printAll()
     int choice;
     printf("\n[1] Save and Return\n[2] Return without Saving\nSelect: ");
     scanf_s("%d", &choice);
+    while (getchar() != '\n'); // flush
 
     if (choice == 1)
         saveToFile(nodes, "ingredients_log.txt");
@@ -101,6 +102,7 @@ void CListPrinter::printNodes(const std::vector<CMyNode*>& nodes)
     int choice;
     printf("\n[1] Save and Return\n[2] Return without Saving\nSelect: ");
     scanf_s("%d", &choice);
+    while (getchar() != '\n'); // flush
 
     if (choice == 1)
         saveToFile(nodes, "ingredients_log.txt");
@@ -121,7 +123,9 @@ void CListPrinter::printSimpleList(const std::vector<CMyNode*>& nodes)
     PRINT_HEADER("Expiry Check Results");
 
     for (CMyNode* node : nodes) {
-        CIngredientData* u = static_cast<CIngredientData*>(node);
+        CIngredientData* u = dynamic_cast<CIngredientData*>(node);
+        if (!u) continue; // 잘못된 캐스팅 방지
+
         printf("%-15s %-20s %-15s %-15s %-15s %-10s %-10s\n",
             (const char*)u->getName(),
             (const char*)u->getIdt(),
@@ -133,7 +137,8 @@ void CListPrinter::printSimpleList(const std::vector<CMyNode*>& nodes)
         );
     }
 
-    PRINT_FOOTER();
+    printf("---------------------------------------------------------------------------------------------------\n"); \
+    fflush(stdout); // 출력 즉시 비우기
 }
 
 /////////////////////////////// 통계 //////////////////////////////
@@ -154,9 +159,9 @@ void CListPrinter::printStatisticsByName(CMyList& list) {
     printf(" [Statistics by Ingredient Name]\n");
     printf("----------------------------------------------\n");
     for (auto& pair : nameCount)
-        printf("  %-15s : %3d개\n", pair.first.c_str(), pair.second);
+        printf("  %-15s : %3s개\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
-    printf("  Total Ingredients : %d개\n", total);
+    printf("  Total Ingredients : %s개\n", total);
     printf("\nReturning to main menu...\n");
     _getch();
 }
@@ -178,9 +183,9 @@ void CListPrinter::printStatisticsByCategory(CMyList& list) {
     printf(" [Statistics by Ingredient Category]\n");
     printf("----------------------------------------------\n");
     for (auto& pair : categoryCount)
-        printf("  %-15s : %3d개\n", pair.first.c_str(), pair.second);
+        printf("  %-15s : %3s개\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
-    printf("  Total Ingredients : %d개\n", total);
+    printf("  Total Ingredients : %s개\n", total);
     printf("\nReturning to main menu...\n");
     _getch();
 }
@@ -202,9 +207,9 @@ void CListPrinter::printStatisticsBySupplier(CMyList& list) {
     printf(" [Statistics by Supplier]\n");
     printf("----------------------------------------------\n");
     for (auto& pair : supplierCount)
-        printf("  %-15s : %3d개\n", pair.first.c_str(), pair.second);
+        printf("  %-15s : %3s개\n", pair.first.c_str(), pair.second);
     printf("----------------------------------------------\n");
-    printf("  Total Ingredients : %d개\n", total);
+    printf("  Total Ingredients : %s개\n", total);
     printf("\nReturning to main menu...\n");
     _getch();
 }

@@ -12,7 +12,10 @@
 
 CMyList::CMyList()
 {
-	m_pHead = new CIngredientData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000", "0000", "0000");
+	//m_pHead = new CIngredientData("aaaaaaaaaaaaaaa", "0000000000", "0000", "None", "000-00000000", "0000", "0000");
+	m_pHead = new CIngredientData();   // MyNode는 순수가상 함수 추상클래스이므로 객체생성 불가 dummy head
+	m_pTail = m_pHead;
+	m_pHead->setNext(nullptr);
 }
 
 CMyList::~CMyList(void)
