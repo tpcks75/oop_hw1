@@ -156,7 +156,8 @@ void CController::searchIngredient()
     /*
     system("cls");
     printf("- Search -\n");
-    printf("1. Search by name\n");
+    printf("1. 
+    name\n");
     printf("2. Search by student ID\n");
     printf("3. Search by admission year\n");
     printf("4. Search by Category year\n");
@@ -170,10 +171,8 @@ void CController::searchIngredient()
     printf("2. Search by Ingredient ID\n");
     printf("3. Search by Category\n");
     printf("4. Search by Supplier\n");
-    printf("5. Partial Search by Ingredient Name\n\n");
+    printf("5. Partial Search by Ingredient Name\n");
     printf("6. Show All Ingredients\n");
-    printf("7. 유통기한임박 재료표기\n");
-    printf("8.소진예정 재료 확인\n");
     printf("> ");
 
     scanf_s("%d", &choice);
@@ -227,7 +226,9 @@ void CController::searchIngredient()
                     user->printNode();
                 }
                 printf("----------------------------------------------\n");
-                printf("총 %d개 발견됨.\n", (int)results.size());
+                printf("총 %d개 발견됨.\n\n", (int)results.size());
+                printf("Successfully Completed\n");
+                printf("메뉴로 돌아가려면 아무 키나 누르세요...\n");
             }
             _getch();
         }

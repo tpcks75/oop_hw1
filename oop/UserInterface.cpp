@@ -55,7 +55,7 @@ void CUserInterface::inputName(char* name) {
     }
 }
 
-//   재료 식별자 (예: Apple_Oct13)
+//   재료 식별자 (예: Apple_1013)
 void CUserInterface::inputIdt(char* idt) {
     while (true) {
         printf("Input Ingredient ID (e.g., Apple_Oct13): ");
